@@ -14,9 +14,8 @@ main {
     height: 90vh;
     display: grid;
     grid-template-columns: max-content max-content;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
-    column-gap: 12rem;
 }
 
 .heroImg {
