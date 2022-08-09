@@ -1,0 +1,79 @@
+html {
+    font-size: 10px;
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: dodgerblue;
+}
+
+main {
+    margin: 10rem 20rem;
+    display: grid;
+    grid-template-columns: 40rem 1fr;
+    place-self: center;
+    column-gap: 12rem;
+}
+
+.heroImg {
+    width: 45rem;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    box-shadow: 0 0 5rem 5rem dodgerblue inset;
+    border-radius: 50rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns:11rem 1fr;
+    grid-template-rows: 7rem repeat(4, auto);
+    text-align: center;
+}
+
+.socials img {
+    width: 5rem;
+    padding: 1rem;
+    border-radius: 2.5rem;
+}
+
+.companyLogo {
+    width: 6rem;
+    padding: 0 .5rem;
+    grid-column: 1 / 1;
+    justify-self: right;
+}
+
+.companyName {
+    grid-column: 2 / 2;
+    font-size: 6rem;
+    margin: 0;
+    justify-self:left;
+    align-self: center;
+}
+
+.subHeader, .comingSoon, h4, .socials {
+    grid-column: 1 / span 2;
+}
+
+.comingSoon {
+    font-size: 5rem;
+    font-family: 'Pacifico', sans-serif;
+    margin-top: 0;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 720px) {
+    .heroImg {
+        display: none;
+    }
+    main {
+        grid-template-columns: auto;
+        margin: 5rem;
+    }
+    header {
+        place-self: center;
+    }
+}
