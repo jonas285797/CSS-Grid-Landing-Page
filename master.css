@@ -71,7 +71,7 @@ h4 {
     }
     main {
         grid-template-columns: auto;
-        margin: 5rem;
+        margin: 8rem auto;
     }
     header {
         place-self: center;
