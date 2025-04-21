@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gear Kingdom Landing Page</title>
   <style>
     body {
@@ -10,17 +10,18 @@
       margin: 0;
       padding: 0;
       background-image: url('img/bg.jpg');
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       color: #333;
     }
+
     header {
       text-align: center;
       padding: 40px 20px;
       background-color: rgba(26, 26, 26, 0.8);
       color: white;
     }
+
     .logo-frame {
       display: inline-block;
       padding: 12px;
@@ -30,27 +31,55 @@
       margin-bottom: 20px;
       transform: translateX(-375px);
     }
-    .logo-frame img {
+
+    .logo-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-container img {
       display: block;
       max-width: 200px;
       width: auto;
       height: auto;
       border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .logo-frame img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 100%);
+      transform: skewX(-25deg);
+      pointer-events: none;
     }
+
+    .logo-container:hover .shine {
+      animation: shine 0.5s linear;
+    }
+
+    @keyframes shine {
+      0% {
+        left: -75%;
+      }
+      100% {
+        left: 125%;
+      }
+    }
+
     h1 {
       font-size: 2rem;
       margin-top: 0;
     }
+
     p.description {
       font-size: 1.2rem;
       max-width: 600px;
       margin: 10px auto 20px;
     }
+
     .button-link {
       background-color: #ff9900;
       color: white;
@@ -60,15 +89,18 @@
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
+
     .button-link:hover {
       background-color: #e88f00;
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       padding: 40px 20px;
     }
+
     .gallery img {
       width: 100%;
       border-radius: 24px;
@@ -76,10 +108,12 @@
       object-fit: cover;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.5);
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
+
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -92,7 +126,10 @@
 <body>
   <header>
     <div class="logo-frame">
-      <img src="img/logo.png" alt="Gear Kingdom Logo" />
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Gear Kingdom Logo" />
+        <div class="shine"></div>
+      </div>
     </div>
     <h1>Gear Kingdom: Industrial Excellence</h1>
     <p class="description">Delivering smart solutions for the factories of tomorrow.</p>
