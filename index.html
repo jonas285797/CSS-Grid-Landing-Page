@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gear Kingdom Landing Page</title>
   <style>
-    /* 页面全局背景图 */
     body {
       font-family: sans-serif;
       margin: 0;
       padding: 0;
       background-image: url('img/bg.jpg');
-      background-size: cover;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
       background-position: center;
       color: #333;
     }
@@ -21,27 +21,26 @@
       background-color: rgba(26, 26, 26, 0.8);
       color: white;
     }
-    /* Logo 相框容器：灰色渐变边框，细边，向左偏移 */
     .logo-frame {
       display: inline-block;
       padding: 12px;
-      /* 细边框，仅为原先宽度的十分之一 */
-      border: 0.5px solid transparent;
-      /* 渐变边框效果 */
-      border-image: linear-gradient(45deg, #ccc, #888) 1;
+      border: none;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border-radius: 12px;
       margin-bottom: 20px;
-      /* 向左微调位置 */
-      transform: translateX(-10px);
+      transform: translateX(-375px);
     }
-    /* Logo 图片规格：最大宽度200px，自适应，圆角 */
     .logo-frame img {
       display: block;
       max-width: 200px;
       width: auto;
       height: auto;
       border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo-frame img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
     h1 {
       font-size: 2rem;
@@ -59,20 +58,27 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .button-link:hover {
+      background-color: #e88f00;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.9);
     }
-    /* 画廊图片圆角修改为24px */
     .gallery img {
       width: 100%;
       border-radius: 24px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
     footer {
       text-align: center;
@@ -100,6 +106,9 @@
     <img src="img/img4.jpg" alt="Showcase Image 4">
     <img src="img/img5.jpg" alt="Showcase Image 5">
     <img src="img/img6.jpg" alt="Showcase Image 6">
+    <img src="img/img7.jpg" alt="Showcase Image 7">
+    <img src="img/img8.jpg" alt="Showcase Image 8">
+    <img src="img/img9.jpg" alt="Showcase Image 9">
   </section>
 
   <footer>
@@ -107,3 +116,4 @@
   </footer>
 </body>
 </html>
+
