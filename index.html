@@ -21,17 +21,21 @@
       background-color: rgba(26, 26, 26, 0.8);
       color: white;
     }
-    /* Logo 相框容器 */
+    /* Logo 相框容器：灰色渐变边框，细边，向左偏移 */
     .logo-frame {
       display: inline-block;
       padding: 12px;
-      background: white;
-      border: 4px solid #eee;
+      /* 细边框，仅为原先宽度的十分之一 */
+      border: 0.5px solid transparent;
+      /* 渐变边框效果 */
+      border-image: linear-gradient(45deg, #ccc, #888) 1;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border-radius: 12px;
       margin-bottom: 20px;
+      /* 向左微调位置 */
+      transform: translateX(-10px);
     }
-    /* Logo 图片规格：最大宽度200px，自适应 */
+    /* Logo 图片规格：最大宽度200px，自适应，圆角 */
     .logo-frame img {
       display: block;
       max-width: 200px;
