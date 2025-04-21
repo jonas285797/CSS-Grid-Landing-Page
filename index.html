@@ -13,27 +13,31 @@
       color: #333;
     }
     header {
-      text-align: center;
-      padding: 40px 20px 20px;
+      position: relative;
+      /* 使用 logo 作为背景图，并放大 */
       background-color: #1a1a1a;
+      background-image: url('img/logo.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      height: 300px; /* 可根据需求调整高度 */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
       color: white;
+      padding-bottom: 20px;
     }
-    /* Logo image styling: auto width, max-width 200px, auto height, centered */
-    header img {
-      width: auto;
-      max-width: 200px;
-      height: auto;
-      display: block;
-      margin: 0 auto 20px;
-    }
+    /* 隐藏原 img 标签占位 */
+    /* header img { display: none; } */
     h1 {
       font-size: 2rem;
-      margin-top: 20px;
+      margin: 10px 0;
     }
     p.description {
       font-size: 1.2rem;
       max-width: 600px;
-      margin: 10px auto 30px;
+      margin: 5px auto 20px;
     }
     .button-link {
       background-color: #ff9900;
@@ -42,6 +46,7 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      margin-bottom: 10px;
     }
     .gallery {
       display: grid;
@@ -67,7 +72,8 @@
 </head>
 <body>
   <header>
-    <img src="img/logo.png" alt="Gear Kingdom Logo" />
+    <!-- Logo 作为背景图，不再需要 img 元素 -->
+    <!-- <img src="img/logo.png" alt="Gear Kingdom Logo" /> -->
     <h1>Gear Kingdom: Industrial Excellence</h1>
     <p class="description">Delivering smart solutions for the factories of tomorrow.</p>
     <a href="https://gearkingdom.com" class="button-link">Visit Now</a>
