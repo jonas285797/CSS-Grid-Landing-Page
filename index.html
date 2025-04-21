@@ -1,80 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gear Kingdom Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gear Kingdom 落地页</title>
   <style>
-    body {
-      font-family: sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
       background-image: url('img/bg.jpg');
       background-size: cover;
       background-position: center;
-      color: #333;
+      background-repeat: no-repeat;
+      color: #fff;
+      overflow-x: hidden;
     }
 
     header {
       text-align: center;
       padding: 40px 20px;
-      background-color: rgba(26, 26, 26, 0.8);
-      color: white;
-    }
-
-    .logo-frame {
-      display: inline-block;
-      padding: 12px;
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
-      margin-bottom: 20px;
-      transform: translateX(-375px);
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .logo-container {
       position: relative;
       display: inline-block;
+      width: 200px;
+      overflow: hidden;
+      margin-bottom: 20px;
     }
 
     .logo-container img {
+      width: 100%;
+      border-radius: 12px;
       display: block;
-      max-width: 200px;
-      width: auto;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .shine {
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 100%);
-      transform: skewX(-25deg);
-      pointer-events: none;
-    }
-
-    .logo-container:hover .shine {
-      animation: shine 0.5s linear;
-    }
-
-    @keyframes shine {
-      0% {
-        left: -75%;
-      }
-      100% {
-        left: 125%;
-      }
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-top: 0;
     }
 
-    p.description {
+    .description {
       font-size: 1.2rem;
       max-width: 600px;
       margin: 10px auto 20px;
@@ -87,49 +59,59 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .button-link:hover {
-      background-color: #e88f00;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 16px;
       padding: 40px 20px;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 24px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 16px;
       object-fit: cover;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
     .gallery img:hover {
-      transform: scale(2.2);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+
+    .zoom-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .zoom-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
 
     footer {
       text-align: center;
       font-size: 0.9rem;
       padding: 20px;
-      background-color: rgba(26, 26, 26, 0.8);
-      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo-frame">
-      <div class="logo-container">
-        <img src="img/logo.png" alt="Gear Kingdom Logo" />
-        <div class="shine"></div>
-      </div>
+    <div class="logo-container">
+      <img src="img/logo.png" alt="Gear Kingdom Logo" />
     </div>
     <h1>Gear Kingdom: Industrial Excellence</h1>
     <p class="description">Delivering smart solutions for the factories of tomorrow.</p>
@@ -137,20 +119,42 @@
   </header>
 
   <section class="gallery">
-    <img src="img/img1.jpg" alt="Showcase Image 1">
-    <img src="img/img2.jpg" alt="Showcase Image 2">
-    <img src="img/img3.jpg" alt="Showcase Image 3">
-    <img src="img/img4.jpg" alt="Showcase Image 4">
-    <img src="img/img5.jpg" alt="Showcase Image 5">
-    <img src="img/img6.jpg" alt="Showcase Image 6">
-    <img src="img/img7.jpg" alt="Showcase Image 7">
-    <img src="img/img8.jpg" alt="Showcase Image 8">
-    <img src="img/img9.jpg" alt="Showcase Image 9">
+    <img src="img/img1.jpg" alt="Showcase Image 1" class="gallery-img">
+    <img src="img/img2.jpg" alt="Showcase Image 2" class="gallery-img">
+    <img src="img/img3.jpg" alt="Showcase Image 3" class="gallery-img">
+    <img src="img/img4.jpg" alt="Showcase Image 4" class="gallery-img">
+    <img src="img/img5.jpg" alt="Showcase Image 5" class="gallery-img">
+    <img src="img/img6.jpg" alt="Showcase Image 6" class="gallery-img">
+    <img src="img/img7.jpg" alt="Showcase Image 7" class="gallery-img">
+    <img src="img/img8.jpg" alt="Showcase Image 8" class="gallery-img">
+    <img src="img/img9.jpg" alt="Showcase Image 9" class="gallery-img">
   </section>
 
   <footer>
     &copy; 2025 Gear Kingdom. All rights reserved.
   </footer>
+
+  <div class="zoom-overlay" id="zoomOverlay">
+    <img src="" alt="Zoomed Image" id="zoomedImage">
+  </div>
+
+  <script>
+    const galleryImgs = document.querySelectorAll('.gallery-img');
+    const overlay = document.getElementById('zoomOverlay');
+    const zoomed = document.getElementById('zoomedImage');
+
+    galleryImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        zoomed.src = img.src;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      zoomed.src = '';
+    });
+  </script>
 </body>
 </html>
 
