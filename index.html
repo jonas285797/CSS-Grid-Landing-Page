@@ -94,6 +94,13 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .zoom-overlay.show {
+      display: flex;
+      opacity: 1;
     }
 
     .zoom-overlay img {
@@ -161,12 +168,12 @@
     galleryImgs.forEach(img => {
       img.addEventListener('click', () => {
         zoomed.src = img.src;
-        overlay.style.display = 'flex';
+        overlay.classList.add('show');
       });
     });
 
     overlay.addEventListener('click', () => {
-      overlay.style.display = 'none';
+      overlay.classList.remove('show');
       zoomed.src = '';
     });
   </script>
