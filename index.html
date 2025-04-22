@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gear Kingdom </title>
+  <title>Gear Kingdom</title>
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * {
       box-sizing: border-box;
@@ -23,7 +25,7 @@
 
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 20px 20px;
       background-color: rgba(0, 0, 0, 0.5);
     }
 
@@ -59,11 +61,28 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffcc00;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 默认显示三列 */
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       padding: 40px 5%;
       max-width: 1000px;
@@ -119,13 +138,13 @@
 
     @media (max-width: 768px) {
       .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 保持3列 */
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (max-width: 480px) {
       .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 保持3列 */
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -135,9 +154,16 @@
     <div class="logo-container">
       <img src="img/logo.png" alt="Gear Kingdom Logo" />
     </div>
-    <h1>Gear Kingdom: Industrial Excellence</h1>
+    <h1>Gear Kingdom</h1>
     <p class="description">Quality Sourcing Services from Mainland China.</p>
-    <a href="https://gearkingdomshop.myshopline.com/" class="button-link">Visit Now</a>
+    <a href="https://gearkingdom.com" class="button-link">Visit Now</a>
+
+    <!-- 社交图标 -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
   </header>
 
   <section class="gallery">
