@@ -63,7 +63,7 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr); /* 默认显示三列 */
       gap: 16px;
       padding: 40px 5%;
       max-width: 1000px;
@@ -119,13 +119,13 @@
 
     @media (max-width: 768px) {
       .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 保持3列 */
       }
     }
 
     @media (max-width: 480px) {
       .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr); /* 保持3列 */
       }
     }
   </style>
