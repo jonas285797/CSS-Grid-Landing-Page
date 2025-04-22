@@ -13,11 +13,12 @@
 
     body {
       font-family: sans-serif;
-      background: url('img/bg.jpg') no-repeat center center fixed;
+      background-image: url('img/bg.jpg');
       background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #fff;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
     header {
@@ -62,11 +63,9 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      padding: 40px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 40px 20px;
     }
 
     .gallery img {
