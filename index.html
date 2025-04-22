@@ -11,14 +11,14 @@
       padding: 0;
     }
 
-   body {
-  font-family: sans-serif;
-  background: url('img/bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+    body {
+      font-family: sans-serif;
+      background: url('img/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
     header {
       text-align: center;
@@ -62,9 +62,11 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
-      padding: 40px 20px;
+      padding: 40px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .gallery img {
@@ -156,4 +158,3 @@
   </script>
 </body>
 </html>
-
