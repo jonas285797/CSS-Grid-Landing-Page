@@ -3,205 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GearKingdom</title>
-  <!-- Font Awesome 图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: sans-serif;
-      background: url('img/bg.jpg') no-repeat center center;
-      background-size: cover;
-      background-attachment: scroll;
-      color: #fff;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .logo-container {
-      position: relative;
-      display: inline-block;
-      width: 200px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .logo-container img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-top: 0;
-    }
-
-    .description {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 10px auto 20px;
-    }
-
-    .button-link {
-      background-color: #ff9900;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-
-    .social-icons {
-      margin-top: 10px;
-    }
-
-    .social-icons a {
-      color: white;
-      font-size: 24px;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      color: #ffcc00;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      padding: 40px 5%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .gallery img {
-      width: 100%;
-      max-height: 240px;
-      object-fit: cover;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      z-index: 2;
-    }
-
-    .zoom-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .zoom-overlay.show {
-      display: flex;
-      opacity: 1;
-    }
-
-    .zoom-overlay img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-  </style>
+  <title>KM包网 - 综合娱乐包网系统</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <div class="logo-container">
-      <img src="img/logo.png" alt="Gear Kingdom Logo" />
-    </div>
-    <h1>Gear Kingdom</h1>
-    <p class="description">Quality Sourcing Services from Mainland China.</p>
-    <a href="https://gearkingdom.com" class="button-link">Visit Now</a>
-
-    <!-- 社交图标 -->
-    <div class="social-icons">
-      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
-      <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
+    <div class="logo">KM包网</div>
+    <nav>
+      <a href="#home">首页</a>
+      <a href="#services">服务</a>
+      <a href="#faq">常见问题</a>
+      <a href="#contact">联系我们</a>
+    </nav>
   </header>
 
-  <section class="gallery">
-    <img src="img/img1.jpg" alt="Showcase Image 1" class="gallery-img">
-    <img src="img/img2.jpg" alt="Showcase Image 2" class="gallery-img">
-    <img src="img/img3.jpg" alt="Showcase Image 3" class="gallery-img">
-    <img src="img/img4.jpg" alt="Showcase Image 4" class="gallery-img">
-    <img src="img/img5.jpg" alt="Showcase Image 5" class="gallery-img">
-    <img src="img/img6.jpg" alt="Showcase Image 6" class="gallery-img">
-    <img src="img/img7.jpg" alt="Showcase Image 7" class="gallery-img">
-    <img src="img/img8.jpg" alt="Showcase Image 8" class="gallery-img">
-    <img src="img/img9.jpg" alt="Showcase Image 9" class="gallery-img">
+  <section id="home" class="hero">
+    <h1>行业领先的综合娱乐包网系统</h1>
+    <p>支持 Web / 移动 / 后台，集成 1000+ 支付通道，专业客服风控</p>
+    <button>立即咨询</button>
+  </section>
+
+  <section id="services" class="services">
+    <h2>我们提供的服务</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>综合后台</h3>
+        <p>管理后台、数据报表、运营风控</p>
+      </div>
+      <div class="card">
+        <h3>财务通道</h3>
+        <p>P2P 交易、USDT 出入金、多支付通道</p>
+      </div>
+      <!-- 继续添加更多卡片：客服托管、风控托管、技术运维等 -->
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>常见问题</h2>
+    <details>
+      <summary>建站周期？</summary>
+      <p>签约后 7–10 个工作日可上线，节假日可能延长。</p>
+    </details>
+    <!-- 更多常见问题 -->
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>联系我们</h2>
+    <form>
+      <label>姓名<input type="text" name="name" /></label>
+      <label>电话<input type="tel" name="phone" /></label>
+      <label>其他<input type="text" name="message" /></label>
+      <button type="submit">提交</button>
+    </form>
   </section>
 
   <footer>
-    &copy; 2025 GearKingdom. All rights reserved.
+    <p>© 2020–2025 KM 中心 保留所有权益</p>
   </footer>
 
-  <div class="zoom-overlay" id="zoomOverlay">
-    <img src="" alt="Zoomed Image" id="zoomedImage">
-  </div>
-
-  <script>
-    const galleryImgs = document.querySelectorAll('.gallery-img');
-    const overlay = document.getElementById('zoomOverlay');
-    const zoomed = document.getElementById('zoomedImage');
-
-    galleryImgs.forEach(img => {
-      img.addEventListener('click', () => {
-        zoomed.src = img.src;
-        overlay.classList.add('show');
-      });
-    });
-
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('show');
-      zoomed.src = '';
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
