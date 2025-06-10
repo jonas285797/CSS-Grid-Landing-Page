@@ -210,11 +210,10 @@
             background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
         }
         
-        /* 使用CSS创建大图内容 */
+        /* 使用本地图片替代CSS绘制 */
         .banner-device {
             width: 800px;
             height: 450px;
-            background: #1a1a1c;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
@@ -225,62 +224,12 @@
             transform-style: preserve-3d;
             transform: rotateY(-10deg);
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSI5ODAiIGhlaWdodD0iNDMwIiBmaWxsPSIjMGEwYTBjIiByeD0iMTUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSI5NjAiIGhlaWdodD0iNDEwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgcng9IjEwIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSI2MCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+aU9TIDI2PC90ZXh0PgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYTg0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWU1Y2U2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc+');
+            background-size: cover;
         }
         
         .banner-device:hover {
             transform: rotateY(0deg);
-        }
-        
-        .banner-device::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
-            border-radius: 15px;
-        }
-        
-        .banner-screen {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow: hidden;
-        }
-        
-        .banner-screen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.2) 0%, transparent 70%);
-        }
-        
-        .banner-screen i {
-            font-size: 80px;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
-            animation: pulse 2s infinite;
-        }
-        
-        .banner-screen span {
-            font-size: 36px;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
         }
         
         .banner-text {
@@ -395,21 +344,25 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
-        .showcase-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        /* 本地图片 */
+        .showcase-image.creative {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjgwIiBmaWxsPSIjZmYyZDU1IiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjYwIiBmaWxsPSIjMGE4NGZmIiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIxMDAiIHI9IjYwIiBmaWxsPSIjNWU1Y2U2IiBvcGFjaXR5PSIwLjgiLz4KICA8dGV4dCB4PSIyNTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DcmVhdGl2ZSBTcGFjZTwvdGV4dD4KPC9zdmc+');
+        }
+
+        .showcase-image.entertainment {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cGF0aCBkPSJNMTUwLDE1MCBMNDUwLDE1MCBDMzUwLDIwMCAyNTAsMjAwIDE1MCwxNTBaIiBmaWxsPSIjMGE4NGZmIi8+CiAgPHBhdGggZD0iTTE1MCwxNTAgTDI1MCw1MCBDMjUwLDEwMCAzNTAsMTAwIDM1MCw1MCBMNDUwLDE1MCBaIiBmaWxsPSIjZmYyZDU1Ii8+CiAgPHRleHQgeD0iMjUwIiB5PSIyNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RW50ZXJ0YWlubWVudDwvdGV4dD4KPC9zdmc+');
+        }
+
+        .showcase-image.analytics {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cGF0aCBkPSJNMTUwLDEwMCBMMTUwLDIwMCBMMjAwLDE1MCBMMjUwLDE4MCBMMzAwLDEyMCBMMzUwLDE2MCBMNDAwLDgwIEw0NTAsMTcwIiBzdHJva2U9IiMwYTg0ZmYiIHN0cm9rZS13aWR0aD0iNiIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjI1MCIgeT0iMjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRhdGEgQW5hbHl0aWNzPC90ZXh0Pgo8L3N2Zz4=');
         }
 
         .showcase-content {
@@ -527,188 +480,26 @@
             padding: 40px;
             position: relative;
             z-index: 1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
-        /* 本地图片替代方案 - 使用CSS创建的设备图形 */
-        .device {
-            position: relative;
-            width: 250px;
-            height: 250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.4s ease;
+        /* 本地产品图片 */
+        .product-image.watch {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMjUiIGN5PSIxMjUiIHI9IjkwIiBmaWxsPSIjMWExYTFjIi8+CiAgPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTI1IiByPSI4MCIgZmlsbD0iIzBhMGEwYyIvPgogIDxjaXJjbGUgY3g9IjEyNSIgY3k9IjEyNSIgcj0iNjUiIGZpbGw9IiMwYTg0ZmYiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjEyNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5XYXRjaDwvdGV4dD4KPC9zdmc+');
         }
-        
-        .product-card:hover .device {
-            transform: scale(1.05);
+
+        .product-image.earbuds {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjEyNSIgcj0iNDAiIGZpbGw9IiMxYTFhMWMiLz4KICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxMjUiIHI9IjQwIiBmaWxsPSIjMWExYTFjIi8+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSIxMjUiIHI9IjMwIiBmaWxsPSIjMGE4NGZmIi8+CiAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMTI1IiByPSIzMCIgZmlsbD0iIzVlNWNlNiIvPgogIDx0ZXh0IHg9IjEyNSIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVhcmJ1ZHM8L3RleHQ+Cjwvc3ZnPg==');
         }
-        
-        /* 智能手表图形 */
-        .smartwatch {
-            width: 180px;
-            height: 180px;
-            background: #1a1a1c;
-            border-radius: 50px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+        .product-image.phone {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjAwIiByeD0iMjAiIGZpbGw9IiMxYTFhMWMiLz4KICA8cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTkwIiByeD0iMTUiIGZpbGw9IiMwYTg0ZmYiLz4KICA8Y2lyY2xlIGN4PSIxMjUiIGN5PSIyMjAiIHI9IjEwIiBmaWxsPSIjMGEwYTBjIi8+CiAgPHRleHQgeD0iMTI1IiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGhvbmU8L3RleHQ+Cjwvc3ZnPg==');
         }
-        
-        .smartwatch::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
-            border-radius: 45px;
-        }
-        
-        .smartwatch-screen {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .smartwatch-screen span {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        
-        /* 无线耳机图形 */
-        .earbuds {
-            display: flex;
-            gap: 50px;
-        }
-        
-        .earbud {
-            width: 80px;
-            height: 120px;
-            background: #1a1a1c;
-            border-radius: 40px;
-            position: relative;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        
-        .earbud::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 50px;
-            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
-            border-radius: 30px;
-        }
-        
-        .earbud::after {
-            content: '';
-            position: absolute;
-            bottom: 15px;
-            left: 30px;
-            width: 20px;
-            height: 20px;
-            background: #0a84ff;
-            border-radius: 50%;
-        }
-        
-        /* 智能手机图形 */
-        .smartphone {
-            width: 140px;
-            height: 250px;
-            background: #1a1a1c;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-        
-        .smartphone::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
-            border-radius: 25px;
-        }
-        
-        .smartphone-screen {
-            position: absolute;
-            top: 20px;
-            left: 15px;
-            right: 15px;
-            bottom: 60px;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .smartphone-button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 5px;
-            background: #333;
-            border-radius: 5px;
-        }
-        
-        /* 平板电脑图形 */
-        .tablet {
-            width: 200px;
-            height: 250px;
-            background: #1a1a1c;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        
-        .tablet::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
-            border-radius: 15px;
-        }
-        
-        .tablet-screen {
-            position: absolute;
-            top: 20px;
-            left: 15px;
-            right: 15px;
-            bottom: 20px;
-            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: 600;
+
+        .product-image.tablet {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTgwIiByeD0iMTUiIGZpbGw9IiMxYTFhMWMiLz4KICA8cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTcwIiByeD0iMTAiIGZpbGw9IiM1ZTVjZTYiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UYWJsZXQ8L3RleHQ+Cjwvc3ZnPg==');
         }
 
         .product-content {
@@ -1110,12 +901,7 @@
     <section class="feature-banner">
         <div class="banner-container">
             <div class="banner-image">
-                <div class="banner-device">
-                    <div class="banner-screen">
-                        <i class="fas fa-star"></i>
-                        <span>iOS 26 全新体验</span>
-                    </div>
-                </div>
+                <div class="banner-device"></div>
             </div>
             <div class="banner-text">
                 <h2>液态玻璃设计革命</h2>
@@ -1134,14 +920,7 @@
         <div class="showcase-container">
             <!-- 横屏展示1 -->
             <div class="showcase-item">
-                <div class="showcase-image">
-                    <div class="tablet" style="width: 300px; height: 200px;">
-                        <div class="tablet-screen" style="border-radius: 8px;">
-                            <i class="fas fa-palette" style="font-size: 40px;"></i>
-                            <span style="margin-top: 15px;">创意工作区</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="showcase-image creative"></div>
                 <div class="showcase-content">
                     <h3>创意工作区</h3>
                     <p>全新的液态玻璃界面为创意工作者提供沉浸式体验。支持多任务分屏操作，智能色彩管理系统确保每一像素的精准呈现。</p>
@@ -1164,26 +943,12 @@
                         <span class="showcase-tag">HDR显示</span>
                     </div>
                 </div>
-                <div class="showcase-image">
-                    <div class="tablet" style="width: 300px; height: 200px;">
-                        <div class="tablet-screen" style="border-radius: 8px;">
-                            <i class="fas fa-film" style="font-size: 40px;"></i>
-                            <span style="margin-top: 15px;">娱乐中心</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="showcase-image entertainment"></div>
             </div>
             
             <!-- 横屏展示3 -->
             <div class="showcase-item">
-                <div class="showcase-image">
-                    <div class="tablet" style="width: 300px; height: 200px;">
-                        <div class="tablet-screen" style="border-radius: 8px;">
-                            <i class="fas fa-chart-line" style="font-size: 40px;"></i>
-                            <span style="margin-top: 15px;">数据分析</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="showcase-image analytics"></div>
                 <div class="showcase-content">
                     <h3>数据分析中心</h3>
                     <p>强大的数据处理能力与直观的可视化界面相结合，让复杂数据变得一目了然。实时分析引擎可处理海量数据，提供即时洞察。</p>
@@ -1206,16 +971,7 @@
         <div class="products-grid">
             <!-- 产品 1 - 智能手表 -->
             <div class="product-card">
-                <div class="product-image">
-                    <div class="device">
-                        <div class="smartwatch">
-                            <div class="smartwatch-screen">
-                                <i class="fas fa-heartbeat" style="font-size: 32px;"></i>
-                                <span>iOS 26</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-image watch"></div>
                 <div class="product-content">
                     <h3>Horizon 智能手表</h3>
                     <p>采用钛金属一体成型设计，配备全天候视网膜显示屏。先进的健康监测系统可实时追踪心率、血氧和压力水平。</p>
@@ -1229,14 +985,7 @@
             
             <!-- 产品 2 - 无线耳机 -->
             <div class="product-card">
-                <div class="product-image">
-                    <div class="device">
-                        <div class="earbuds">
-                            <div class="earbud"></div>
-                            <div class="earbud"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-image earbuds"></div>
                 <div class="product-content">
                     <h3>Nova 无线耳机</h3>
                     <p>采用空间音频技术，提供沉浸式听觉体验。自适应降噪功能根据环境自动调整，智能佩戴检测确保无缝切换。</p>
@@ -1250,17 +999,7 @@
             
             <!-- 产品 3 - 智能手机 -->
             <div class="product-card">
-                <div class="product-image">
-                    <div class="device">
-                        <div class="smartphone">
-                            <div class="smartphone-screen">
-                                <i class="fas fa-camera" style="font-size: 40px;"></i>
-                                <span style="margin-top: 15px;">iOS 26</span>
-                            </div>
-                            <div class="smartphone-button"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-image phone"></div>
                 <div class="product-content">
                     <h3>Aurora 智能手机</h3>
                     <p>超视网膜XDR显示屏带来震撼视觉体验，陶瓷背板与钛金属边框的完美结合。革命性的影像系统让每张照片都如专业摄影作品般出色。</p>
@@ -1274,16 +1013,7 @@
             
             <!-- 产品 4 - 平板电脑 -->
             <div class="product-card">
-                <div class="product-image">
-                    <div class="device">
-                        <div class="tablet">
-                            <div class="tablet-screen">
-                                <i class="fas fa-pencil-alt" style="font-size: 40px;"></i>
-                                <span style="margin-top: 15px;">iOS 26</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-image tablet"></div>
                 <div class="product-content">
                     <h3>Lumina 平板电脑</h3>
                     <p>超薄设计融合强劲性能，Liquid视网膜显示屏带来极致视觉享受。支持Apple Pencil和妙控键盘，成为您创意工作的完美伴侣。</p>
@@ -1336,11 +1066,13 @@
     </section>
 
     <!-- iOS 26页脚 - 更新为Telegram按钮 -->
+    <!-- 修改Telegram链接位置 -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>小飞机联系我们</h2>
-            <p></p>
-            <a href="https://t.me/your_channel" class="telegram-btn" target="_blank">
+            <h2>加入我们的社区</h2>
+            <p>获取最新产品资讯和设计理念分享</p>
+            <!-- 在这里修改Telegram链接 -->
+            <a href="https://t.me/KING21JONAS" class="telegram-btn" target="_blank">
                 <i class="fab fa-telegram"></i>
                 加入Telegram频道
             </a>
@@ -1382,7 +1114,7 @@
             animateOnScroll();
             
             // 设备浮动效果
-            const devices = document.querySelectorAll('.device');
+            const devices = document.querySelectorAll('.banner-device, .showcase-image');
             devices.forEach((device, index) => {
                 device.style.animation = `float ${4 + index * 0.5}s ease-in-out infinite`;
             });
