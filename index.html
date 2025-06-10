@@ -4,104 +4,148 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KM包网 - 综合娱乐包网系统</title>
+  <!-- AOS 动画 -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- TailwindCSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    /* iOS 系统字体 */
+    html { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: #F2F2F7;
+      color: #1C1C1E;
+      margin: 0;
+    }
+    /* 顶部导航：毛玻璃效果 */
+    header {
+      backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.75);
+    }
+    /* 卡片样式 */
+    .ios-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .ios-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    /* 按钮样式 */
+    .ios-btn {
+      background: #007AFF;
       color: white;
-      font-family: 'Helvetica Neue', sans-serif;
+      padding: 12px 24px;
+      border-radius: 16px;
+      font-weight: 600;
+      transition: background .2s ease;
     }
-    .hero-bg {
-      background: url('https://images.unsplash.com/photo-1604671801909-3e7b9f9a1e2a?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
-      background-size: cover;
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    .ios-btn:hover { background: #005BB5; }
   </style>
 </head>
 <body>
-  <header class="fixed top-0 left-0 right-0 bg-black bg-opacity-70 p-4 flex justify-between items-center z-50">
-    <div class="text-2xl font-bold">KM包网</div>
+  <header class="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
+    <div class="text-xl font-semibold">KM包网</div>
     <nav class="space-x-4">
-      <a href="#home" class="hover:text-yellow-400">首页</a>
-      <a href="#services" class="hover:text-yellow-400">服务</a>
-      <a href="#products" class="hover:text-yellow-400">产品介绍</a>
-      <a href="#faq" class="hover:text-yellow-400">常见问题</a>
-      <a href="#contact" class="hover:text-yellow-400">联系我们</a>
+      <a href="#home" class="text-base hover:text-blue-500">首页</a>
+      <a href="#services" class="text-base hover:text-blue-500">服务</a>
+      <a href="#products" class="text-base hover:text-blue-500">产品</a>
+      <a href="#faq" class="text-base hover:text-blue-500">FAQ</a>
+      <a href="#contact" class="text-base hover:text-blue-500">联系我们</a>
     </nav>
   </header>
 
-  <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4">
-    <div class="glass p-8 rounded-xl" data-aos="fade-up">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4">行业领先的综合娱乐包网系统</h1>
-      <p class="text-lg md:text-xl mb-6">Web + 移动端 + 后台管理，集成支付系统，安全稳定</p>
-      <a href="#contact" class="bg-yellow-400 text-black font-bold py-2 px-6 rounded-full hover:bg-yellow-500">立即咨询</a>
-    </div>
-  </section>
+  <main class="pt-20">
+    <!-- Hero 区 -->
+    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6" data-aos="fade-up">
+      <div class="max-w-lg ios-card p-8">
+        <h1 class="text-4xl font-bold mb-4">行业领先的综合娱乐包网系统</h1>
+        <p class="text-lg mb-6">Web & Mobile & 后台，一站式集成支付与风控</p>
+        <a href="#contact" class="ios-btn inline-block">立即咨询</a>
+      </div>
+    </section>
 
-  <section id="services" class="py-20 px-4 md:px-16 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">我们提供的服务</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-xl font-bold mb-2">综合后台</h3>
-        <p>管理后台、数据报表、运营风控</p>
+    <!-- 服务模块 -->
+    <section id="services" class="py-16 px-6 bg-white" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-3xl font-bold text-center mb-12">我们的服务</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="ios-card p-6" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold mb-2">综合后台</h3>
+          <p>仪表盘、报表、风控管理，一站式运营支持。</p>
+        </div>
+        <div class="ios-card p-6" data-aos="zoom-in" data-aos-delay="50">
+          <h3 class="text-xl font-semibold mb-2">支付通道</h3>
+          <p>支持多种支付，实时对账与清算。</p>
+        </div>
+        <div class="ios-card p-6" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-2">客服系统</h3>
+          <p>内置智能客服，7×24 小时在线服务。</p>
+        </div>
       </div>
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-xl font-bold mb-2">财务通道</h3>
-        <p>P2P 交易、USDT 出入金、多支付通道</p>
-      </div>
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-xl font-bold mb-2">客服系统</h3>
-        <p>智能客服托管、全天候在线支持</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="products" class="py-20 px-4 md:px-16 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">产品模块介绍</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="100">
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-2xl font-bold mb-2">娱乐直播系统</h3>
-        <p>高并发低延迟，支持多路推流，主播等级分成，打赏系统完善。</p>
+    <!-- 产品模块 -->
+    <section id="products" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="150">
+      <h2 class="text-3xl font-bold text-center mb-12">产品模块</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="ios-card p-6">
+          <h3 class="text-2xl font-semibold mb-2">直播系统</h3>
+          <p>低延迟高并发，支持多平台推流与互动。</p>
+        </div>
+        <div class="ios-card p-6">
+          <h3 class="text-2xl font-semibold mb-2">游戏平台</h3>
+          <p>接入主流厂商，棋牌、电游一站管理。</p>
+        </div>
+        <div class="ios-card p-6">
+          <h3 class="text-2xl font-semibold mb-2">分销管理</h3>
+          <p>代理层级灵活，分润自动结算。</p>
+        </div>
+        <div class="ios-card p-6">
+          <h3 class="text-2xl font-semibold mb-2">安全防护</h3>
+          <p>金融级加密与多重防护，保障数据安全。</p>
+        </div>
       </div>
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-2xl font-bold mb-2">棋牌/电子平台整合</h3>
-        <p>支持API接入多个主流游戏厂商，用户体验流畅，玩法多样。</p>
-      </div>
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-2xl font-bold mb-2">用户权限与分销管理</h3>
-        <p>支持层级代理体系，后台灵活配置，分润明细清晰透明。</p>
-      </div>
-      <div class="glass p-6 rounded-xl">
-        <h3 class="text-2xl font-bold mb-2">数据安全防护</h3>
-        <p>采用分布式部署，金融级别加密防护，保障平台运营安全。</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="py-20 px-4 md:px-16 bg-black">
-    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">联系我们</h2>
-    <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-      <form class="space-y-4">
-        <input type="text" placeholder="姓名" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700" />
-        <input type="tel" placeholder="电话" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700" />
-        <textarea placeholder="留言信息" rows="4" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700"></textarea>
-        <button type="submit" class="w-full bg-yellow-400 text-black py-3 rounded-lg font-bold hover:bg-yellow-500">提交</button>
-      </form>
-    </div>
-  </section>
+    <!-- FAQ 区 -->
+    <section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-3xl font-bold text-center mb-8">常见问题</h2>
+      <div class="max-w-2xl mx-auto space-y-4">
+        <details class="ios-card p-4">
+          <summary class="font-semibold">建站需要多长时间？</summary>
+          <p class="mt-2">一般签约后 7-10 个工作日即可上线。</p>
+        </details>
+        <details class="ios-card p-4" data-aos="fade-in">
+          <summary class="font-semibold">如何接入支付？</summary>
+          <p class="mt-2">提供文档与 SDK，多种语言一键集成。</p>
+        </details>
+      </div>
+    </section>
 
-  <footer class="text-center text-sm py-6 bg-gray-800 text-gray-400">
-    © 2020–2025 KM 中心 保留所有权益
+    <!-- 联系区 -->
+    <section id="contact" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="250">
+      <h2 class="text-3xl font-bold text-center mb-8">联系我们</h2>
+      <div class="max-w-md mx-auto">
+        <form class="space-y-4">
+          <input type="text" placeholder="姓名" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300" />
+          <input type="tel" placeholder="电话" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300" />
+          <textarea placeholder="留言信息" rows="4" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300"></textarea>
+          <button type="submit" class="ios-btn w-full">提交</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-6 text-center text-gray-500 text-sm bg-white" data-aos="fade-up" data-aos-delay="300">
+    KM包网 © 2020–2025 版权所有
   </footer>
 
+  <!-- AOS 脚本 -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 600, once: true });
   </script>
 </body>
 </html>
