@@ -16,7 +16,7 @@
       color: #1C1C1E;
       margin: 0;
     }
-    /* 顶部导航：毛玻璃效果 */
+    /* 顶部毛玻璃效果 */
     header {
       backdrop-filter: blur(20px);
       background: rgba(255,255,255,0.75);
@@ -27,6 +27,9 @@
       height: 32px;
       background: #E5E5EA;
       border-radius: 8px;
+      /* 替换 Logo 图片路径：替换 background-image URL */
+      background-image: url('/path/to/logo.png');
+      background-size: cover;
     }
     /* 卡片样式 */
     .ios-card {
@@ -52,7 +55,7 @@
       display: inline-block;
     }
     .ios-btn:hover { background: #005BB5; }
-    /* 占位图 */
+    /* 占位图：替换前显示上传提示，替换后可删除该样式 */
     .placeholder {
       background: #E5E5EA;
       width: 100%;
@@ -72,22 +75,19 @@
   </style>
 </head>
 <body>
-  <header class="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
-    <!-- Logo 图标占位，替换 src 更新图标 -->
+  <header class="fixed top-0 left-0 right-0 p-4 flex justify-start items-center z-50">
+    <!-- Logo 图标占位：替换 '/path/to/logo.png' -->
     <div class="logo-placeholder"></div>
-    <nav class="space-x-4">
-      <a href="#home" class="text-base hover:text-blue-500">首页</a>
-      <a href="#services" class="text-base hover:text-blue-500">服务</a>
-      <a href="#products" class="text-base hover:text-blue-500">产品</a>
-      <a href="#faq" class="text-base hover:text-blue-500">FAQ</a>
-      <a href="#contact" class="text-base hover:text-blue-500">联系我们</a>
-    </nav>
   </header>
 
-  <main class="pt-20">
+  <main class="pt-16">
     <!-- Hero 区 -->
     <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6" data-aos="fade-up">
       <div class="max-w-lg ios-card p-8">
+        <!-- 背景图：替换 url('/path/to/hero-bg.jpg') -->
+        <div class="placeholder" style="background-image:url('/path/to/hero-bg.jpg'); background-size:cover;">
+          <!-- 删除 placeholder 样式后显示真实图片 -->
+        </div>
         <h1 class="text-4xl font-bold mb-4">行业领先的综合娱乐包网系统</h1>
         <p class="text-lg mb-6">Web & Mobile & 后台，一站式集成支付与风控</p>
         <a href="#contact" class="ios-btn">立即咨询</a>
@@ -99,21 +99,24 @@
       <h2 class="text-3xl font-bold text-center mb-12">我们的服务</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 服务1 图：替换 '/path/to/service1.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service1.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-xl font-semibold mb-2">综合后台</h3>
             <p>仪表盘、报表、风控管理，一站式运营支持。</p>
           </div>
         </div>
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in" data-aos-delay="50">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 服务2 图：替换 '/path/to/service2.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service2.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-xl font-semibold mb-2">支付通道</h3>
             <p>支持多种支付，实时对账与清算。</p>
           </div>
         </div>
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 服务3 图：替换 '/path/to/service3.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service3.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-xl font-semibold mb-2">客服系统</h3>
             <p>内置智能客服，7×24 小时在线服务。</p>
@@ -127,69 +130,25 @@
       <h2 class="text-3xl font-bold text-center mb-12">产品模块</h2>
       <div class="space-y-8">
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="fade-right">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 产品1 图：替换 '/path/to/product1.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product1.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-2xl font-semibold mb-2">直播系统</h3>
             <p>低延迟高并发，支持多平台推流与互动。</p>
           </div>
         </div>
         <div class="ios-card flex flex-col md:flex-row-reverse overflow-hidden" data-aos="fade-left">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 产品2 图：替换 '/path/to/product2.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product2.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-2xl font-semibold mb-2">游戏平台</h3>
             <p>接入主流厂商，棋牌、电游一站管理。</p>
           </div>
         </div>
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="fade-right">
-          <div class="placeholder md:w-1/3"></div>
+          <!-- 产品3 图：替换 '/path/to/product3.jpg' -->
+          <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product3.jpg'); background-size:cover;"></div>
           <div class="p-6 md:w-2/3">
             <h3 class="text-2xl font-semibold mb-2">分销管理</h3>
             <p>代理层级灵活，分润自动结算。</p>
           </div>
-        </div>
-        <div class="ios-card flex flex-col md:flex-row-reverse overflow-hidden" data-aos="fade-left">
-          <div class="placeholder md:w-1/3"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-2xl font-semibold mb-2">安全防护</h3>
-            <p>金融级加密与多重防护，保障数据安全。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ 区 -->
-    <section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up" data-aos-delay="200">
-      <h2 class="text-3xl font-bold text-center mb-8">常见问题</h2>
-      <div class="max-w-2xl mx-auto space-y-4">
-        <details class="ios-card p-4">
-          <summary class="font-semibold">建站需要多长时间？</summary>
-          <p class="mt-2">一般签约后 7-10 个工作日即可上线。</p>
-        </details>
-        <details class="ios-card p-4" data-aos="fade-in">
-          <summary class="font-semibold">如何接入支付？</summary>
-          <p class="mt-2">提供文档与 SDK，多种语言一键集成。</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- 联系区 -->
-    <section id="contact" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="250">
-      <h2 class="text-3xl font-bold text-center mb-8">联系我们</h2>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-        <!-- Telegram 跳转按钮，替换链接到你的 Telegram 用户名 -->
-        <a href="https://t.me/your_telegram_username" target="_blank" class="ios-btn">联系 Telegram</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="py-6 text-center text-gray-500 text-sm bg-white" data-aos="fade-up" data-aos-delay="300">
-    KM包网 © 2020–2025 版权所有
-  </footer>
-
-  <!-- AOS 脚本 -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 600, once: true });
-  </script>
-</body>
-</html>
