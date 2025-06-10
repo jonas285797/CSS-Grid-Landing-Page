@@ -11,68 +11,34 @@
   <style>
     /* iOS 系统字体 */
     html { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    body {
-      background: #F2F2F7;
-      color: #1C1C1E;
-      margin: 0;
-    }
+    body { background: #F2F2F7; color: #1C1C1E; margin: 0; }
     /* 顶部毛玻璃效果，仅显示 Logo */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      backdrop-filter: blur(20px);
-      background: rgba(255,255,255,0.75);
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      z-index: 50;
-    }
-    /* Logo 占位：替换 '/path/to/logo.png' */
-    .logo-placeholder {
-      width: 32px;
-      height: 32px;
-      background-image: url('/path/to/logo.png');
-      background-size: cover;
-      border-radius: 8px;
-    }
+    header { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(20px); background: rgba(255,255,255,0.75); padding: 1rem; display: flex; align-items: center; z-index: 50; }
+    /* Logo 占位 — 图片①：替换 '/path/to/logo.png' */
+    .logo-placeholder { width: 32px; height: 32px; background-image: url('/path/to/logo.png'); background-size: cover; border-radius: 8px; }
     /* 卡片样式 */
-    .ios-card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(15px);
-      border-radius: 24px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .ios-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
+    .ios-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-radius: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); transition: transform .3s ease, box-shadow .3s ease; }
+    .ios-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
     /* 按钮样式 */
-    .ios-btn {
-      background: #007AFF;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 16px;
-      font-weight: 600;
-      transition: background .2s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
+    .ios-btn { background: #007AFF; color: #fff; padding: 12px 24px; border-radius: 16px; font-weight: 600; transition: background .2s ease; text-decoration: none; display: inline-block; }
     .ios-btn:hover { background: #005BB5; }
     /* 图片占位，可替换 background-image */
-    .placeholder {
-      background: #E5E5EA;
-      width: 100%;
-      height: 0;
-      padding-bottom: 66%; /* 3:2 ratio */
-      border-radius: 16px;
-      position: relative;
-      background-position: center;
-      background-size: cover;
-    }
+    .placeholder { background: #E5E5EA; width: 100%; height: 0; padding-bottom: 66%; /* 3:2 ratio */ border-radius: 16px; position: relative; background-position: center; background-size: cover; }
   </style>
 </head>
 <body>
+  <!--
+    图片资源替换说明：
+    ① logo.png
+    ② hero-bg.jpg
+    ③ service1.jpg
+    ④ service2.jpg
+    ⑤ service3.jpg
+    ⑥ product1.jpg
+    ⑦ product2.jpg
+    ⑧ product3.jpg
+    ⑨ product4.jpg
+  -->
   <!-- 顶部仅 Logo -->
   <header>
     <div class="logo-placeholder"></div>
@@ -82,7 +48,7 @@
     <!-- Hero 区 -->
     <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6" data-aos="fade-up">
       <div class="max-w-lg ios-card p-8">
-        <!-- Hero 背景图：替换 '/path/to/hero-bg.jpg' -->
+        <!-- Hero 背景图 — 图片②：替换 '/path/to/hero-bg.jpg' -->
         <div class="placeholder mb-6" style="background-image:url('/path/to/hero-bg.jpg');"></div>
         <h1 class="text-4xl font-bold mb-4">行业领先的综合娱乐包网系统</h1>
         <p class="text-lg mb-6">Web & Mobile & 后台，一站式集成支付与风控</p>
@@ -94,29 +60,20 @@
     <section id="services" class="py-16 px-6 bg-white" data-aos="fade-up" data-aos-delay="100">
       <h2 class="text-3xl font-bold text-center mb-12">我们的服务</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- 服务 1 -->
+        <!-- 服务 1 — 图片③：替换 '/path/to/service1.jpg' -->
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service1.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-xl font-semibold mb-2">综合后台</h3>
-            <p>仪表盘、报表、风控管理，一站式运营支持。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-xl font-semibold mb-2">综合后台</h3><p>仪表盘、报表、风控管理，一站式运营支持。</p></div>
         </div>
-        <!-- 服务 2 -->
+        <!-- 服务 2 — 图片④：替换 '/path/to/service2.jpg' -->
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in" data-aos-delay="50">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service2.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-xl font-semibold mb-2">支付通道</h3>
-            <p>支持多种支付，实时对账与清算。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-xl font-semibold mb-2">支付通道</h3><p>支持多种支付，实时对账与清算。</p></div>
         </div>
-        <!-- 服务 3 -->
+        <!-- 服务 3 — 图片⑤：替换 '/path/to/service3.jpg' -->
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/service3.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-xl font-semibold mb-2">客服系统</h3>
-            <p>内置智能客服，7×24 小时在线服务。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-xl font-semibold mb-2">客服系统</h3><p>内置智能客服，7×24 小时在线服务。</p></div>
         </div>
       </div>
     </section>
@@ -125,56 +82,42 @@
     <section id="products" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="150">
       <h2 class="text-3xl font-bold text-center mb-12">产品模块</h2>
       <div class="space-y-8">
-        <!-- 产品 1 -->
+        <!-- 产品 1 — 图片⑥：替换 '/path/to/product1.jpg' -->
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="fade-right">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product1.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-2xl font-semibold mb-2">直播系统</h3>
-            <p>低延迟高并发，支持多平台推流与互动。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-2xl font-semibold mb-2">直播系统</h3><p>低延迟高并发，支持多平台推流与互动。</p></div>
         </div>
-        <!-- 产品 2 -->
+        <!-- 产品 2 — 图片⑦：替换 '/path/to/product2.jpg' -->
         <div class="ios-card flex flex-col md:flex-row-reverse overflow-hidden" data-aos="fade-left">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product2.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-2xl font-semibold mb-2">游戏平台</h3>
-            <p>接入主流厂商，棋牌、电游一站管理。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-2xl font-semibold mb-2">游戏平台</h3><p>接入主流厂商，棋牌、电游一站管理。</p></div>
         </div>
-        <!-- 产品 3 -->
+        <!-- 产品 3 — 图片⑧：替换 '/path/to/product3.jpg' -->
         <div class="ios-card flex flex-col md:flex-row overflow-hidden" data-aos="fade-right">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product3.jpg');"></div>
-          <div class="p-6 md:w-2/3">
-            <h3 class="text-2xl font-semibold mb-2">分销管理</h3>
-            <p>代理层级灵活，分润自动结算。</p>
-          </div>
+          <div class="p-6 md:w-2/3"><h3 class="text-2xl font-semibold mb-2">分销管理</h3><p>代理层级灵活，分润自动结算。</p></div>
         </div>
-        <!-- 产品 4 -->
+        <!-- 产品 4 — 图片⑨：替换 '/path/to/product4.jpg' -->
         <div class="ios-card flex flex-col md:flex-row-reverse overflow-hidden" data-aos="fade-left">
           <div class="placeholder md:w-1/3" style="background-image:url('/path/to/product4.jpg');"></div>
-io-content-truncated
+          <div class="p-6 md:w-2/3"><h3 class="text-2xl font-semibold mb-2">安全防护</h3><p>金融级加密与多重防护，保障数据安全。</p></div>
+        </div>
       </div>
     </section>
 
-    <!-- 联系区 已替换为 Telegram 跳转 -->
+    <!-- 联系区 — 已替换为 Telegram 跳转 -->
     <section id="contact" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="200">
       <h2 class="text-3xl font-bold text-center mb-8">联系我们</h2>
-      <div class="text-center">
-        <a href="https://t.me/your_telegram_username" target="_blank" class="ios-btn">联系 Telegram</a>
-      </div>
+      <div class="text-center"><a href="https://t.me/your_telegram_username" target="_blank" class="ios-btn">联系 Telegram</a></div>
     </section>
 
   </main>
 
   <!-- 页脚 -->
-  <footer class="py-6 text-center text-gray-500 text-sm bg-white" data-aos="fade-up" data-aos-delay="250">
-    KM包网 © 2020–2025 版权所有
-  </footer>
+  <footer class="py-6 text-center text-gray-500 text-sm bg-white" data-aos="fade-up" data-aos-delay="250">KM包网 © 2020–2025 版权所有</footer>
 
   <!-- AOS 脚本 -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 600, once: true });
-  </script>
+  <script>AOS.init({ duration: 600, once: true });</script>
 </body>
 </html>
