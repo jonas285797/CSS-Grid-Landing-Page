@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple产品展示</title>
+    <title>iOS 26风格产品展示</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,27 +14,36 @@
         }
 
         :root {
-            --primary-color: #0071e3;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --bg-light: #f5f5f7;
-            --bg-dark: #000;
-            --white: #fff;
+            --primary-color: #0a84ff;
+            --secondary-color: #5e5ce6;
+            --text-primary: #ffffff;
+            --text-secondary: #aeaeb2;
+            --bg-dark: #000000;
+            --card-bg: rgba(28, 28, 30, 0.65);
+            --card-border: rgba(99, 99, 102, 0.4);
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --blur-bg: rgba(28, 28, 30, 0.7);
+            --accent-color: #ff2d55;
         }
 
         body {
-            background-color: #fff;
+            background: linear-gradient(135deg, #1c1c1e, #000000, #2c2c2e);
             color: var(--text-primary);
             overflow-x: hidden;
+            min-height: 100vh;
+            background-attachment: fixed;
+            padding: 0;
         }
 
-        /* 简化导航栏 - 仅保留logo */
+        /* iOS 26风格导航 - 更新LOGO图标 */
         .navbar {
             position: fixed;
-            top: 20px;
+            top: 30px;
             left: 40px;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .logo {
@@ -44,13 +52,50 @@
             color: var(--text-primary);
             display: flex;
             align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 12px 20px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .logo i {
-            margin-right: 5px;
+            color: var(--primary-color);
         }
 
-        /* 主标题区域 */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            border-color: rgba(99, 99, 102, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* iOS 26主标题区域 */
         .hero {
             height: 100vh;
             display: flex;
@@ -58,21 +103,37 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, #f5f5f7, #ffffff);
+            padding: 0 20px;
             position: relative;
             overflow: hidden;
-            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(10, 132, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 72px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(45deg, #0071e3, #2997ff, #7dc8ff);
+            font-size: 76px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -1px;
             animation: fadeInUp 1s ease-out;
         }
 
@@ -80,49 +141,189 @@
             font-size: 32px;
             font-weight: 500;
             margin-bottom: 30px;
-            color: var(--text-primary);
+            color: var(--text-secondary);
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
+            max-width: 700px;
+            line-height: 1.4;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero p {
-            font-size: 24px;
+            font-size: 22px;
             max-width: 700px;
-            line-height: 1.4;
+            line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 40px;
             animation: fadeInUp 1s ease-out 0.4s forwards;
             opacity: 0;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            animation: fadeInUp 1s ease-out 0.6s forwards;
-            opacity: 0;
+        /* 新增：特色展示上方的大图展示区 */
+        .feature-banner {
+            padding: 100px 5%;
+            background: transparent;
+            position: relative;
         }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-            padding: 12px 26px;
+        
+        .feature-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(94, 92, 230, 0.1) 0%, transparent 60%);
+            z-index: -1;
+        }
+        
+        .banner-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .banner-image {
+            height: 500px;
             border-radius: 30px;
-            font-size: 18px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+            perspective: 1500px;
+        }
+        
+        .banner-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        /* 使用CSS创建大图内容 */
+        .banner-device {
+            width: 800px;
+            height: 450px;
+            background: #1a1a1c;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transform: rotateY(-10deg);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .banner-device:hover {
+            transform: rotateY(0deg);
+        }
+        
+        .banner-device::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
+            border-radius: 15px;
+        }
+        
+        .banner-screen {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .banner-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.2) 0%, transparent 70%);
+        }
+        
+        .banner-screen i {
+            font-size: 80px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+        
+        .banner-screen span {
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner-text {
+            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .banner-text h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .banner-text h3 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 30px;
         }
 
-        .btn-primary:hover {
-            background: #0077ed;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 113, 227, 0.2);
+        /* 三个横屏图片展示区 */
+        .horizontal-showcase {
+            padding: 100px 5%;
+            background: transparent;
+            position: relative;
         }
 
-        /* 产品展示部分 */
-        .products {
-            padding: 120px 5%;
-            background: #fff;
+        .horizontal-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 90%, rgba(255, 45, 85, 0.1) 0%, transparent 60%);
+            z-index: -1;
         }
 
         .section-header {
@@ -134,6 +335,10 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .section-header p {
@@ -144,48 +349,366 @@
             line-height: 1.5;
         }
 
+        .showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .showcase-item {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 99, 102, 0.7);
+        }
+
+        .showcase-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(94, 92, 230, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .showcase-image {
+            flex: 1;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .showcase-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .showcase-content {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .showcase-content h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .showcase-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .showcase-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .showcase-tag {
+            background: rgba(94, 92, 230, 0.2);
+            color: #a2d2ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(162, 210, 255, 0.2);
+        }
+
+        .showcase-tag:hover {
+            background: rgba(94, 92, 230, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* iOS 26产品展示部分 */
+        .products {
+            padding: 100px 5%;
+            background: transparent;
+            position: relative;
+        }
+
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(10, 132, 255, 0.05) 0%, transparent 60%);
+            z-index: -1;
+        }
+
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        /* iOS 26液态玻璃卡片 - 优化悬停效果 */
         .product-card {
-            background: var(--bg-light);
-            border-radius: 24px;
+            background: var(--card-bg);
+            border-radius: 30px;
             overflow: hidden;
             transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(94, 92, 230, 0.15) 0%, transparent 60%);
+            z-index: 0;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 99, 102, 0.7);
         }
 
         .product-image {
-            height: 300px;
+            height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #f0f0f5, #e0e0ea);
-            padding: 30px;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
         }
 
-        .product-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: var(--transition);
+        /* 本地图片替代方案 - 使用CSS创建的设备图形 */
+        .device {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.4s ease;
         }
-
-        .product-card:hover .product-image img {
+        
+        .product-card:hover .device {
             transform: scale(1.05);
+        }
+        
+        /* 智能手表图形 */
+        .smartwatch {
+            width: 180px;
+            height: 180px;
+            background: #1a1a1c;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        .smartwatch::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
+            border-radius: 45px;
+        }
+        
+        .smartwatch-screen {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .smartwatch-screen span {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* 无线耳机图形 */
+        .earbuds {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .earbud {
+            width: 80px;
+            height: 120px;
+            background: #1a1a1c;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .earbud::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 50px;
+            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
+            border-radius: 30px;
+        }
+        
+        .earbud::after {
+            content: '';
+            position: absolute;
+            bottom: 15px;
+            left: 30px;
+            width: 20px;
+            height: 20px;
+            background: #0a84ff;
+            border-radius: 50%;
+        }
+        
+        /* 智能手机图形 */
+        .smartphone {
+            width: 140px;
+            height: 250px;
+            background: #1a1a1c;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+        
+        .smartphone::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
+            border-radius: 25px;
+        }
+        
+        .smartphone-screen {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            right: 15px;
+            bottom: 60px;
+            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .smartphone-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 5px;
+            background: #333;
+            border-radius: 5px;
+        }
+        
+        /* 平板电脑图形 */
+        .tablet {
+            width: 200px;
+            height: 250px;
+            background: #1a1a1c;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .tablet::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: linear-gradient(135deg, #0a0a0c, #2a2a2c);
+            border-radius: 15px;
+        }
+        
+        .tablet-screen {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            right: 15px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
         }
 
         .product-content {
@@ -193,140 +716,175 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .product-card h3 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .product-card .price {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .product-card p {
             font-size: 18px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             flex: 1;
         }
 
+        /* iOS 26液态玻璃标签 */
         .product-features {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-
-        .product-features li {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            list-style-type: disc;
-        }
-
-        .product-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 15px;
+            margin-top: 20px;
         }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+        .feature-tag {
+            background: rgba(94, 92, 230, 0.2);
+            color: #a2d2ff;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
-            text-decoration: none;
             transition: var(--transition);
-            flex: 1;
-            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(162, 210, 255, 0.2);
         }
 
-        .btn-outline:hover {
-            background: rgba(0, 113, 227, 0.1);
+        .feature-tag:hover {
+            background: rgba(94, 92, 230, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* 技术规格 */
+        /* iOS 26技术规格 */
         .specs {
             padding: 100px 5%;
-            background: var(--bg-light);
+            background: transparent;
+            position: relative;
+        }
+
+        .specs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 30%, rgba(10, 132, 255, 0.1) 0%, transparent 60%);
+            z-index: -1;
         }
 
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .spec-item {
             text-align: center;
-            padding: 30px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            background: var(--card-bg);
+            border-radius: 26px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
             transition: var(--transition);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .spec-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 99, 102, 0.7);
+        }
+
+        .spec-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 45, 85, 0.1) 0%, transparent 70%);
         }
 
         .spec-item .icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #0071e3, #7dc8ff);
-            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-        }
-
-        .spec-item .icon i {
             font-size: 30px;
-            color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .spec-item .number {
             font-size: 42px;
-            font-weight: 700;
-            background: linear-gradient(45deg, #0071e3, #2997ff);
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         .spec-item .label {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
         }
 
-        /* 页脚 */
+        /* iOS 26页脚 - 更新为Telegram按钮 */
         .footer {
-            background: #fff;
-            padding: 80px 5% 40px;
+            background: var(--blur-bg);
+            padding: 100px 5% 60px;
             text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(10, 132, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .footer-content {
             max-width: 800px;
             margin: 0 auto 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer h2 {
             font-size: 48px;
             margin-bottom: 30px;
             font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #a2d2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .footer p {
@@ -336,30 +894,51 @@
             line-height: 1.6;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0088cc;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 14px;
             transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-links a:hover {
-            color: var(--primary-color);
+        .telegram-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .telegram-btn:hover::before {
+            left: 100%;
+        }
+
+        .telegram-btn:hover {
+            background: #006699;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
         }
 
         .copyright {
             color: var(--text-secondary);
-            font-size: 14px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 16px;
+            padding-top: 40px;
+            border-top: 1px solid var(--card-border);
+            position: relative;
+            z-index: 1;
         }
 
         /* 动画 */
@@ -373,13 +952,25 @@
                 transform: translateY(0);
             }
         }
-
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
         @keyframes float {
             0% {
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
             100% {
                 transform: translateY(0px);
@@ -393,7 +984,7 @@
             }
             
             .hero h2 {
-                font-size: 28px;
+                font-size: 26px;
             }
             
             .hero p {
@@ -407,6 +998,41 @@
             .section-header p {
                 font-size: 18px;
             }
+            
+            .navbar {
+                left: 20px;
+                top: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .showcase-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .showcase-features {
+                justify-content: center;
+            }
+            
+            .banner-image {
+                height: 400px;
+            }
+            
+            .banner-device {
+                width: 90%;
+                height: 350px;
+            }
+            
+            .banner-text h2 {
+                font-size: 42px;
+            }
+            
+            .banner-text h3 {
+                font-size: 32px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -415,152 +1041,290 @@
             }
             
             .hero h2 {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             .hero p {
                 font-size: 18px;
-                padding: 0 20px;
             }
             
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
+            .product-card h3 {
+                font-size: 24px;
             }
             
-            .navbar {
-                left: 20px;
-                top: 15px;
+            .product-card p {
+                font-size: 16px;
             }
             
-            .product-actions {
-                flex-direction: column;
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .showcase-content h3 {
+                font-size: 28px;
+            }
+            
+            .banner-image {
+                height: 300px;
+            }
+            
+            .banner-device {
+                height: 250px;
+            }
+            
+            .banner-text h2 {
+                font-size: 32px;
+            }
+            
+            .banner-text h3 {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 简化导航栏 - 仅保留logo -->
+    <!-- iOS 26风格导航 - 更新LOGO图标 -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fab fa-apple"></i>
+            <i class="fas fa-rocket"></i>
+            <span>DesignLab</span>
+        </div>
+        <div class="nav-links">
+            <div class="nav-link">产品</div>
+            <div class="nav-link">设计</div>
+            <div class="nav-link">技术</div>
+            <div class="nav-link">支持</div>
         </div>
     </nav>
 
-    <!-- 主标题区域 -->
+    <!-- iOS 26主标题区域 -->
     <section class="hero">
-        <h1>Apple 产品系列</h1>
-        <h2>创新设计，卓越体验</h2>
-        <p>探索 Apple 精心打造的产品系列，感受科技与艺术的完美结合</p>
-        <div class="hero-buttons">
-            <a href="#" class="btn-primary">浏览全部产品</a>
+        <div class="hero-content">
+            <h1>未来设计</h1>
+            <h2>探索iOS 26风格的前沿产品</h2>
+            <p>融合液态玻璃美学与先进技术，重新定义用户体验</p>
         </div>
     </section>
 
-    <!-- 产品展示部分 -->
+    <!-- 新增：特色展示上方的大图展示区 -->
+    <section class="feature-banner">
+        <div class="banner-container">
+            <div class="banner-image">
+                <div class="banner-device">
+                    <div class="banner-screen">
+                        <i class="fas fa-star"></i>
+                        <span>iOS 26 全新体验</span>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-text">
+                <h2>液态玻璃设计革命</h2>
+                <h3>创新视觉体验，重新定义交互方式</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三个横屏图片展示区 -->
+    <section class="horizontal-showcase">
+        <div class="section-header">
+            <h2>特色展示</h2>
+            <p>体验iOS 26设计的创新应用场景</p>
+        </div>
+        
+        <div class="showcase-container">
+            <!-- 横屏展示1 -->
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <div class="tablet" style="width: 300px; height: 200px;">
+                        <div class="tablet-screen" style="border-radius: 8px;">
+                            <i class="fas fa-palette" style="font-size: 40px;"></i>
+                            <span style="margin-top: 15px;">创意工作区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <h3>创意工作区</h3>
+                    <p>全新的液态玻璃界面为创意工作者提供沉浸式体验。支持多任务分屏操作，智能色彩管理系统确保每一像素的精准呈现。</p>
+                    <div class="showcase-features">
+                        <span class="showcase-tag">多任务处理</span>
+                        <span class="showcase-tag">色彩精准</span>
+                        <span class="showcase-tag">无缝协作</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 横屏展示2 -->
+            <div class="showcase-item">
+                <div class="showcase-content">
+                    <h3>娱乐体验</h3>
+                    <p>沉浸式娱乐系统结合动态刷新率技术，带来影院级视听体验。自适应环境光调节，在任何光线条件下都提供最佳视觉效果。</p>
+                    <div class="showcase-features">
+                        <span class="showcase-tag">空间音频</span>
+                        <span class="showcase-tag">120Hz刷新率</span>
+                        <span class="showcase-tag">HDR显示</span>
+                    </div>
+                </div>
+                <div class="showcase-image">
+                    <div class="tablet" style="width: 300px; height: 200px;">
+                        <div class="tablet-screen" style="border-radius: 8px;">
+                            <i class="fas fa-film" style="font-size: 40px;"></i>
+                            <span style="margin-top: 15px;">娱乐中心</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 横屏展示3 -->
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <div class="tablet" style="width: 300px; height: 200px;">
+                        <div class="tablet-screen" style="border-radius: 8px;">
+                            <i class="fas fa-chart-line" style="font-size: 40px;"></i>
+                            <span style="margin-top: 15px;">数据分析</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <h3>数据分析中心</h3>
+                    <p>强大的数据处理能力与直观的可视化界面相结合，让复杂数据变得一目了然。实时分析引擎可处理海量数据，提供即时洞察。</p>
+                    <div class="showcase-features">
+                        <span class="showcase-tag">实时分析</span>
+                        <span class="showcase-tag">数据可视化</span>
+                        <span class="showcase-tag">AI预测</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- iOS 26产品展示部分 -->
     <section class="products">
         <div class="section-header">
             <h2>精选产品</h2>
-            <p>探索我们最新、最受欢迎的产品系列</p>
+            <p>体验融合iOS 26设计语言的创新设备</p>
         </div>
         <div class="products-grid">
-            <!-- 产品 1 -->
+            <!-- 产品 1 - 智能手表 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693009279096" alt="iPhone 15 Pro">
+                    <div class="device">
+                        <div class="smartwatch">
+                            <div class="smartwatch-screen">
+                                <i class="fas fa-heartbeat" style="font-size: 32px;"></i>
+                                <span>iOS 26</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="product-content">
-                    <h3>iPhone 15 Pro</h3>
-                    <div class="price">¥8,999 起</div>
-                    <p>突破性的相机系统，强大的A17 Pro芯片，钛金属设计，带来前所未有的iPhone体验。</p>
-                    <ul class="product-features">
-                        <li>6.1英寸超视网膜XDR显示屏</li>
-                        <li>4800万像素主摄+三摄系统</li>
-                        <li>A17 Pro芯片，性能提升20%</li>
-                        <li>USB-C接口，充电更快</li>
-                    </ul>
-                    <div class="product-actions">
-                        <a href="#" class="btn-outline">了解更多</a>
-                        <a href="#" class="btn-primary">购买</a>
+                    <h3>Horizon 智能手表</h3>
+                    <p>采用钛金属一体成型设计，配备全天候视网膜显示屏。先进的健康监测系统可实时追踪心率、血氧和压力水平。</p>
+                    <div class="product-features">
+                        <span class="feature-tag">健康监测</span>
+                        <span class="feature-tag">30天续航</span>
+                        <span class="feature-tag">防水设计</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 产品 2 -->
+            <!-- 产品 2 - 无线耳机 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-silver-select-202310?wid=452&hei=420&fmt=jpeg&qlt=95&.v=1697230830743" alt="MacBook Pro">
+                    <div class="device">
+                        <div class="earbuds">
+                            <div class="earbud"></div>
+                            <div class="earbud"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="product-content">
-                    <h3>MacBook Pro 14"</h3>
-                    <div class="price">¥12,999 起</div>
-                    <p>搭载M3芯片的MacBook Pro，性能惊人，电池续航长达22小时， Liquid视网膜XDR显示屏。</p>
-                    <ul class="product-features">
-                        <li>M3芯片，8核CPU，10核GPU</li>
-                        <li>14.2英寸Liquid视网膜XDR显示屏</li>
-                        <li>长达22小时电池续航</li>
-                        <li>1080p FaceTime高清摄像头</li>
-                    </ul>
-                    <div class="product-actions">
-                        <a href="#" class="btn-outline">了解更多</a>
-                        <a href="#" class="btn-primary">购买</a>
+                    <h3>Nova 无线耳机</h3>
+                    <p>采用空间音频技术，提供沉浸式听觉体验。自适应降噪功能根据环境自动调整，智能佩戴检测确保无缝切换。</p>
+                    <div class="product-features">
+                        <span class="feature-tag">空间音频</span>
+                        <span class="feature-tag">主动降噪</span>
+                        <span class="feature-tag">24小时续航</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 产品 3 -->
+            <!-- 产品 3 - 智能手机 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MPL53_AV1?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1661869957760" alt="Apple Watch">
+                    <div class="device">
+                        <div class="smartphone">
+                            <div class="smartphone-screen">
+                                <i class="fas fa-camera" style="font-size: 40px;"></i>
+                                <span style="margin-top: 15px;">iOS 26</span>
+                            </div>
+                            <div class="smartphone-button"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="product-content">
-                    <h3>Apple Watch Ultra 2</h3>
-                    <div class="price">¥6,499 起</div>
-                    <p>专为极限运动打造，更大更亮的显示屏，双频GPS，最深可达100米防水。</p>
-                    <ul class="product-features">
-                        <li>49mm钛金属表壳</li>
-                        <li>最亮达3000尼特的显示屏</li>
-                        <li>双频GPS，定位更精准</li>
-                        <li>最长36小时电池续航</li>
-                    </ul>
-                    <div class="product-actions">
-                        <a href="#" class="btn-outline">了解更多</a>
-                        <a href="#" class="btn-primary">购买</a>
+                    <h3>Aurora 智能手机</h3>
+                    <p>超视网膜XDR显示屏带来震撼视觉体验，陶瓷背板与钛金属边框的完美结合。革命性的影像系统让每张照片都如专业摄影作品般出色。</p>
+                    <div class="product-features">
+                        <span class="feature-tag">专业级相机</span>
+                        <span class="feature-tag">全天候续航</span>
+                        <span class="feature-tag">陶瓷机身</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 产品 4 -->
+            <!-- 产品 4 - 平板电脑 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-air-select-wifi-blue-202203?wid=940&hei=1112&fmt=png-alpha&.v=1645066731719" alt="iPad Air">
+                    <div class="device">
+                        <div class="tablet">
+                            <div class="tablet-screen">
+                                <i class="fas fa-pencil-alt" style="font-size: 40px;"></i>
+                                <span style="margin-top: 15px;">iOS 26</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="product-content">
-                    <h3>iPad Air</h3>
-                    <div class="price">¥4,799 起</div>
-                    <p>强大的M1芯片，10.9英寸Liquid视网膜显示屏，支持5G，兼容妙控键盘和第二代Apple Pencil。</p>
-                    <ul class="product-features">
-                        <li>M1芯片，性能提升60%</li>
-                        <li>10.9英寸Liquid视网膜显示屏</li>
-                        <li>1200万像素超广角前置摄像头</li>
-                        <li>支持5G网络</li>
-                    </ul>
-                    <div class="product-actions">
-                        <a href="#" class="btn-outline">了解更多</a>
-                        <a href="#" class="btn-primary">购买</a>
+                    <h3>Lumina 平板电脑</h3>
+                    <p>超薄设计融合强劲性能，Liquid视网膜显示屏带来极致视觉享受。支持Apple Pencil和妙控键盘，成为您创意工作的完美伴侣。</p>
+                    <div class="product-features">
+                        <span class="feature-tag">超薄设计</span>
+                        <span class="feature-tag">创意工具</span>
+                        <span class="feature-tag">全天续航</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 技术规格 -->
+    <!-- iOS 26技术规格 -->
     <section class="specs">
         <div class="section-header">
-            <h2>创新技术</h2>
-            <p>Apple产品的核心技术优势</p>
+            <h2>技术亮点</h2>
+            <p>iOS 26带来的创新体验</p>
         </div>
         <div class="specs-grid">
+            <div class="spec-item">
+                <div class="icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="number">7层</div>
+                <div class="label">液态玻璃结构</div>
+            </div>
+            <div class="spec-item">
+                <div class="icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="number">120Hz</div>
+                <div class="label">动态刷新率</div>
+            </div>
+            <div class="spec-item">
+                <div class="icon">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <div class="number">36h</div>
+                <div class="label">长效续航</div>
+            </div>
             <div class="spec-item">
                 <div class="icon">
                     <i class="fas fa-microchip"></i>
@@ -568,77 +1332,60 @@
                 <div class="number">A17 Pro</div>
                 <div class="label">定制芯片</div>
             </div>
-            <div class="spec-item">
-                <div class="icon">
-                    <i class="fas fa-battery-full"></i>
-                </div>
-                <div class="number">22h</div>
-                <div class="label">超长续航</div>
-            </div>
-            <div class="spec-item">
-                <div class="icon">
-                    <i class="fas fa-camera"></i>
-                </div>
-                <div class="number">48MP</div>
-                <div class="label">专业相机</div>
-            </div>
-            <div class="spec-item">
-                <div class="icon">
-                    <i class="fas fa-display"></i>
-                </div>
-                <div class="number">XDR</div>
-                <div class="label">顶级显示屏</div>
-            </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- iOS 26页脚 - 更新为Telegram按钮 -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>体验 Apple 世界</h2>
-            <p>探索更多创新产品，加入Apple生态系统</p>
-            <a href="#" class="btn-primary">访问 Apple Store</a>
-        </div>
-        <div class="footer-links">
-            <a href="#">购物帮助</a>
-            <a href="#">技术支持</a>
-            <a href="#">关于Apple</a>
-            <a href="#">账户管理</a>
-            <a href="#">企业采购</a>
+            <h2>小飞机联系我们</h2>
+            <p></p>
+            <a href="https://t.me/your_channel" class="telegram-btn" target="_blank">
+                <i class="fab fa-telegram"></i>
+                加入Telegram频道
+            </a>
         </div>
         <div class="copyright">
-            <p>Copyright © 2023 Apple Inc. 保留所有权利。</p>
+            <p>KM包网 &copy; 2022-2025 | 一站式全托管</p>
         </div>
     </footer>
 
     <script>
-        // 卡片动画效果
-        const productCards = document.querySelectorAll('.product-card');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // 滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.product-card, .spec-item, .showcase-item, .banner-image, .section-header');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.85) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // 初始隐藏元素
+            const elements = document.querySelectorAll('.product-card, .spec-item, .showcase-item, .banner-image, .section-header');
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             });
-        }, { threshold: 0.1 });
-        
-        productCards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // 规格卡片动画
-        const specItems = document.querySelectorAll('.spec-item');
-        
-        specItems.forEach((item, index) => {
-            item.style.opacity = 0;
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
-            observer.observe(item);
+            
+            // 添加滚动监听
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // 初始触发一次
+            animateOnScroll();
+            
+            // 设备浮动效果
+            const devices = document.querySelectorAll('.device');
+            devices.forEach((device, index) => {
+                device.style.animation = `float ${4 + index * 0.5}s ease-in-out infinite`;
+            });
         });
     </script>
 </body>
