@@ -21,6 +21,13 @@
       backdrop-filter: blur(20px);
       background: rgba(255,255,255,0.75);
     }
+    /* Logo 占位 */
+    .logo-placeholder {
+      width: 32px;
+      height: 32px;
+      background: #E5E5EA;
+      border-radius: 8px;
+    }
     /* 卡片样式 */
     .ios-card {
       background: rgba(255, 255, 255, 0.8);
@@ -41,6 +48,8 @@
       border-radius: 16px;
       font-weight: 600;
       transition: background .2s ease;
+      text-decoration: none;
+      display: inline-block;
     }
     .ios-btn:hover { background: #005BB5; }
     /* 占位图 */
@@ -64,7 +73,8 @@
 </head>
 <body>
   <header class="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
-    <div class="text-xl font-semibold">KM包网</div>
+    <!-- Logo 图标占位，替换 src 更新图标 -->
+    <div class="logo-placeholder"></div>
     <nav class="space-x-4">
       <a href="#home" class="text-base hover:text-blue-500">首页</a>
       <a href="#services" class="text-base hover:text-blue-500">服务</a>
@@ -80,7 +90,7 @@
       <div class="max-w-lg ios-card p-8">
         <h1 class="text-4xl font-bold mb-4">行业领先的综合娱乐包网系统</h1>
         <p class="text-lg mb-6">Web & Mobile & 后台，一站式集成支付与风控</p>
-        <a href="#contact" class="ios-btn inline-block">立即咨询</a>
+        <a href="#contact" class="ios-btn">立即咨询</a>
       </div>
     </section>
 
@@ -165,13 +175,9 @@
     <!-- 联系区 -->
     <section id="contact" class="py-16 px-6 bg-gray-50" data-aos="fade-up" data-aos-delay="250">
       <h2 class="text-3xl font-bold text-center mb-8">联系我们</h2>
-      <div class="max-w-md mx-auto">
-        <form class="space-y-4">
-          <input type="text" placeholder="姓名" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300" />
-          <input type="tel" placeholder="电话" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300" />
-          <textarea placeholder="留言信息" rows="4" class="w-full p-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-300"></textarea>
-          <button type="submit" class="ios-btn w-full">提交</button>
-        </form>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+        <!-- Telegram 跳转按钮，替换链接到你的 Telegram 用户名 -->
+        <a href="https://t.me/your_telegram_username" target="_blank" class="ios-btn">联系 Telegram</a>
       </div>
     </section>
   </main>
