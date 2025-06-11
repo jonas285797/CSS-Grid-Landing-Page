@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS 26风格产品展示</title>
+    <title>KM全托管包网</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -35,7 +35,7 @@
             padding: 0;
         }
 
-        /* iOS 26风格导航 - 更新LOGO图标 */
+        /* iOS 26风格导航 */
         .navbar {
             position: fixed;
             top: 30px;
@@ -95,7 +95,7 @@
             transform: translateY(-2px);
         }
 
-        /* iOS 26主标题区域 */
+        /* 主标题区域 */
         .hero {
             height: 100vh;
             display: flex;
@@ -162,7 +162,7 @@
             margin-right: auto;
         }
 
-        /* 新增：特色展示上方的大图展示区 */
+        /* 大图展示区 */
         .feature-banner {
             padding: 100px 5%;
             background: transparent;
@@ -191,44 +191,26 @@
             border-radius: 30px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             margin-bottom: 40px;
             perspective: 1500px;
+            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
         }
         
-        .banner-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-        }
-        
-        /* 使用本地图片替代CSS绘制 */
-        .banner-device {
-            width: 800px;
-            height: 450px;
+        .banner-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
             border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
             transform: rotateY(-10deg);
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSI5ODAiIGhlaWdodD0iNDMwIiBmaWxsPSIjMGEwYTBjIiByeD0iMTUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSI5NjAiIGhlaWdodD0iNDEwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgcng9IjEwIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSI2MCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+aU9TIDI2PC90ZXh0PgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYTg0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWU1Y2U2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc+');
-            background-size: cover;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
-        .banner-device:hover {
+        .banner-image:hover img {
             transform: rotateY(0deg);
         }
         
@@ -348,21 +330,14 @@
             align-items: center;
             justify-content: center;
             z-index: 1;
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
         }
 
-        /* 本地图片 */
-        .showcase-image.creative {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjgwIiBmaWxsPSIjZmYyZDU1IiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjYwIiBmaWxsPSIjMGE4NGZmIiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIxMDAiIHI9IjYwIiBmaWxsPSIjNWU1Y2U2IiBvcGFjaXR5PSIwLjgiLz4KICA8dGV4dCB4PSIyNTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DcmVhdGl2ZSBTcGFjZTwvdGV4dD4KPC9zdmc+');
-        }
-
-        .showcase-image.entertainment {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cGF0aCBkPSJNMTUwLDE1MCBMNDUwLDE1MCBDMzUwLDIwMCAyNTAsMjAwIDE1MCwxNTBaIiBmaWxsPSIjMGE4NGZmIi8+CiAgPHBhdGggZD0iTTE1MCwxNTAgTDI1MCw1MCBDMjUwLDEwMCAzNTAsMTAwIDM1MCw1MCBMNDUwLDE1MCBaIiBmaWxsPSIjZmYyZDU1Ii8+CiAgPHRleHQgeD0iMjUwIiB5PSIyNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RW50ZXJ0YWlubWVudDwvdGV4dD4KPC9zdmc+');
-        }
-
-        .showcase-image.analytics {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFjIiByeD0iMjAiLz4KICA8cGF0aCBkPSJNMTUwLDEwMCBMMTUwLDIwMCBMMjAwLDE1MCBMMjUwLDE4MCBMMzAwLDEyMCBMMzUwLDE2MCBMNDAwLDgwIEw0NTAsMTcwIiBzdHJva2U9IiMwYTg0ZmYiIHN0cm9rZS13aWR0aD0iNiIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjI1MCIgeT0iMjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRhdGEgQW5hbHl0aWNzPC90ZXh0Pgo8L3N2Zz4=');
+        .showcase-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
         }
 
         .showcase-content {
@@ -413,7 +388,7 @@
             transform: translateY(-2px);
         }
 
-        /* iOS 26产品展示部分 */
+        /* 产品展示部分 */
         .products {
             padding: 100px 5%;
             background: transparent;
@@ -439,7 +414,7 @@
             margin: 0 auto;
         }
 
-        /* iOS 26液态玻璃卡片 - 优化悬停效果 */
+        /* 液态玻璃卡片 */
         .product-card {
             background: var(--card-bg);
             border-radius: 30px;
@@ -480,26 +455,17 @@
             padding: 40px;
             position: relative;
             z-index: 1;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
         }
 
-        /* 本地产品图片 */
-        .product-image.watch {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMjUiIGN5PSIxMjUiIHI9IjkwIiBmaWxsPSIjMWExYTFjIi8+CiAgPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTI1IiByPSI4MCIgZmlsbD0iIzBhMGEwYyIvPgogIDxjaXJjbGUgY3g9IjEyNSIgY3k9IjEyNSIgcj0iNjUiIGZpbGw9IiMwYTg0ZmYiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjEyNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5XYXRjaDwvdGV4dD4KPC9zdmc+');
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
         }
-
-        .product-image.earbuds {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjEyNSIgcj0iNDAiIGZpbGw9IiMxYTFhMWMiLz4KICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxMjUiIHI9IjQwIiBmaWxsPSIjMWExYTFjIi8+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSIxMjUiIHI9IjMwIiBmaWxsPSIjMGE4NGZmIi8+CiAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMTI1IiByPSIzMCIgZmlsbD0iIzVlNWNlNiIvPgogIDx0ZXh0IHg9IjEyNSIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVhcmJ1ZHM8L3RleHQ+Cjwvc3ZnPg==');
-        }
-
-        .product-image.phone {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjAwIiByeD0iMjAiIGZpbGw9IiMxYTFhMWMiLz4KICA8cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTkwIiByeD0iMTUiIGZpbGw9IiMwYTg0ZmYiLz4KICA8Y2lyY2xlIGN4PSIxMjUiIGN5PSIyMjAiIHI9IjEwIiBmaWxsPSIjMGEwYTBjIi8+CiAgPHRleHQgeD0iMTI1IiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGhvbmU8L3RleHQ+Cjwvc3ZnPg==');
-        }
-
-        .product-image.tablet {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTgwIiByeD0iMTUiIGZpbGw9IiMxYTFhMWMiLz4KICA8cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTcwIiByeD0iMTAiIGZpbGw9IiM1ZTVjZTYiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UYWJsZXQ8L3RleHQ+Cjwvc3ZnPg==');
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
 
         .product-content {
@@ -526,7 +492,7 @@
             flex: 1;
         }
 
-        /* iOS 26液态玻璃标签 */
+        /* 液态玻璃标签 */
         .product-features {
             display: flex;
             flex-wrap: wrap;
@@ -551,7 +517,7 @@
             transform: translateY(-2px);
         }
 
-        /* iOS 26技术规格 */
+        /* 技术规格 */
         .specs {
             padding: 100px 5%;
             background: transparent;
@@ -639,7 +605,7 @@
             z-index: 1;
         }
 
-        /* iOS 26页脚 - 更新为Telegram按钮 */
+        /* 页脚 */
         .footer {
             background: var(--blur-bg);
             padding: 100px 5% 60px;
@@ -812,11 +778,6 @@
                 height: 400px;
             }
             
-            .banner-device {
-                width: 90%;
-                height: 350px;
-            }
-            
             .banner-text h2 {
                 font-size: 42px;
             }
@@ -859,10 +820,6 @@
                 height: 300px;
             }
             
-            .banner-device {
-                height: 250px;
-            }
-            
             .banner-text h2 {
                 font-size: 32px;
             }
@@ -870,11 +827,15 @@
             .banner-text h3 {
                 font-size: 24px;
             }
+            
+            .spec-item .number {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- iOS 26风格导航 - 更新LOGO图标 -->
+    <!-- iOS 26风格导航 -->
     <nav class="navbar">
         <div class="logo">
             <i class="fas fa-rocket"></i>
@@ -888,7 +849,7 @@
         </div>
     </nav>
 
-    <!-- iOS 26主标题区域 -->
+    <!-- 主标题区域 -->
     <section class="hero">
         <div class="hero-content">
             <h1>未来设计</h1>
@@ -897,11 +858,11 @@
         </div>
     </section>
 
-    <!-- 新增：特色展示上方的大图展示区 -->
+    <!-- 大图展示区 -->
     <section class="feature-banner">
         <div class="banner-container">
             <div class="banner-image">
-                <div class="banner-device"></div>
+                <img src="img/feature-banner.png" alt="iOS 26 全新体验">
             </div>
             <div class="banner-text">
                 <h2>液态玻璃设计革命</h2>
@@ -920,7 +881,9 @@
         <div class="showcase-container">
             <!-- 横屏展示1 -->
             <div class="showcase-item">
-                <div class="showcase-image creative"></div>
+                <div class="showcase-image">
+                    <img src="img/showcase-creative.png" alt="创意工作区">
+                </div>
                 <div class="showcase-content">
                     <h3>创意工作区</h3>
                     <p>全新的液态玻璃界面为创意工作者提供沉浸式体验。支持多任务分屏操作，智能色彩管理系统确保每一像素的精准呈现。</p>
@@ -943,12 +906,16 @@
                         <span class="showcase-tag">HDR显示</span>
                     </div>
                 </div>
-                <div class="showcase-image entertainment"></div>
+                <div class="showcase-image">
+                    <img src="img/showcase-entertainment.png" alt="娱乐体验">
+                </div>
             </div>
             
             <!-- 横屏展示3 -->
             <div class="showcase-item">
-                <div class="showcase-image analytics"></div>
+                <div class="showcase-image">
+                    <img src="img/showcase-analytics.png" alt="数据分析">
+                </div>
                 <div class="showcase-content">
                     <h3>数据分析中心</h3>
                     <p>强大的数据处理能力与直观的可视化界面相结合，让复杂数据变得一目了然。实时分析引擎可处理海量数据，提供即时洞察。</p>
@@ -962,7 +929,7 @@
         </div>
     </section>
 
-    <!-- iOS 26产品展示部分 -->
+    <!-- 产品展示部分 -->
     <section class="products">
         <div class="section-header">
             <h2>精选产品</h2>
@@ -971,7 +938,9 @@
         <div class="products-grid">
             <!-- 产品 1 - 智能手表 -->
             <div class="product-card">
-                <div class="product-image watch"></div>
+                <div class="product-image">
+                    <img src="img/product-watch.png" alt="Horizon 智能手表">
+                </div>
                 <div class="product-content">
                     <h3>Horizon 智能手表</h3>
                     <p>采用钛金属一体成型设计，配备全天候视网膜显示屏。先进的健康监测系统可实时追踪心率、血氧和压力水平。</p>
@@ -985,7 +954,9 @@
             
             <!-- 产品 2 - 无线耳机 -->
             <div class="product-card">
-                <div class="product-image earbuds"></div>
+                <div class="product-image">
+                    <img src="img/product-earbuds.png" alt="Nova 无线耳机">
+                </div>
                 <div class="product-content">
                     <h3>Nova 无线耳机</h3>
                     <p>采用空间音频技术，提供沉浸式听觉体验。自适应降噪功能根据环境自动调整，智能佩戴检测确保无缝切换。</p>
@@ -999,7 +970,9 @@
             
             <!-- 产品 3 - 智能手机 -->
             <div class="product-card">
-                <div class="product-image phone"></div>
+                <div class="product-image">
+                    <img src="img/product-phone.png" alt="Aurora 智能手机">
+                </div>
                 <div class="product-content">
                     <h3>Aurora 智能手机</h3>
                     <p>超视网膜XDR显示屏带来震撼视觉体验，陶瓷背板与钛金属边框的完美结合。革命性的影像系统让每张照片都如专业摄影作品般出色。</p>
@@ -1013,7 +986,9 @@
             
             <!-- 产品 4 - 平板电脑 -->
             <div class="product-card">
-                <div class="product-image tablet"></div>
+                <div class="product-image">
+                    <img src="img/product-tablet.png" alt="Lumina 平板电脑">
+                </div>
                 <div class="product-content">
                     <h3>Lumina 平板电脑</h3>
                     <p>超薄设计融合强劲性能，Liquid视网膜显示屏带来极致视觉享受。支持Apple Pencil和妙控键盘，成为您创意工作的完美伴侣。</p>
@@ -1027,7 +1002,7 @@
         </div>
     </section>
 
-    <!-- iOS 26技术规格 -->
+    <!-- 技术规格 -->
     <section class="specs">
         <div class="section-header">
             <h2>技术亮点</h2>
@@ -1065,20 +1040,19 @@
         </div>
     </section>
 
-    <!-- iOS 26页脚 - 更新为Telegram按钮 -->
-    <!-- 修改Telegram链接位置 -->
+    <!-- 页脚 - Telegram按钮 -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>加入我们的社区</h2>
-            <p>获取最新产品资讯和设计理念分享</p>
+            <h2>联络我们</h2>
+            <p>我们期待您的造访</p>
             <!-- 在这里修改Telegram链接 -->
             <a href="https://t.me/KING21JONAS" class="telegram-btn" target="_blank">
                 <i class="fab fa-telegram"></i>
-                加入Telegram频道
+               合作联系
             </a>
         </div>
         <div class="copyright">
-            <p>KM包网 &copy; 2022-2025 | 一站式全托管</p>
+            <p>DesignLab &copy; 2023 | 融合iOS 26设计语言</p>
         </div>
     </footer>
 
@@ -1114,9 +1088,9 @@
             animateOnScroll();
             
             // 设备浮动效果
-            const devices = document.querySelectorAll('.banner-device, .showcase-image');
-            devices.forEach((device, index) => {
-                device.style.animation = `float ${4 + index * 0.5}s ease-in-out infinite`;
+            const images = document.querySelectorAll('.banner-image img, .showcase-image img, .product-image img');
+            images.forEach((img, index) => {
+                img.style.animation = `float ${4 + index * 0.5}s ease-in-out infinite`;
             });
         });
     </script>
