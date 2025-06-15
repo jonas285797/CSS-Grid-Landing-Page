@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KM全托管包网</title>
+    <title>KM全托管包网 - 包网2.0时代的引领者</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,6 +17,7 @@
         :root {
             --primary-color: #0a84ff;
             --secondary-color: #5e5ce6;
+            --accent-color: #ff2d55;
             --text-primary: #ffffff;
             --text-secondary: #aeaeb2;
             --bg-dark: #000000;
@@ -23,14 +25,13 @@
             --card-border: rgba(99, 99, 102, 0.4);
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             --blur-bg: rgba(28, 28, 30, 0.7);
-            --accent-color: #ff2d55;
-            --section-1-bg: linear-gradient(135deg, #1c1c1e, #000000, #2c2c2e);
-            --section-2-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-3-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
-            --section-4-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-5-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
-            --section-6-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-7-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
+            --section-1-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
+            --section-2-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
+            --section-3-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
+            --section-4-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
+            --section-5-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
+            --section-6-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
+            --section-7-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
         }
 
         body {
@@ -178,7 +179,7 @@
             margin-right: auto;
         }
 
-        /* 大图展示区 - 按照1040×532比例优化 */
+        /* 大图展示区 */
         .feature-banner {
             padding: 100px 5%;
             background: var(--section-2-bg);
@@ -405,7 +406,6 @@
             background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
         }
 
-        /* 使用CSS创建展示内容 */
         .showcase-content {
             flex: 1;
             padding: 20px;
@@ -1234,8 +1234,9 @@
     <!-- iOS 26风格导航 -->
     <nav class="navbar">
         <div class="logo">
-            <!-- 替换位置1: 导航栏logo -->
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230a84ff'/%3E%3Cpath d='M30,30 L50,70 L70,30 Z' fill='white'/%3E%3C/svg%3E" alt="KM Logo">
+            <div class="logo-icon" style="width: 40px; height: 40px; background: linear-gradient(135deg, #0a84ff, #5e5ce6); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-cube" style="color: white; font-size: 24px;"></i>
+            </div>
             <span>KM全托管包网</span>
         </div>
         <div class="nav-links">
@@ -1255,14 +1256,13 @@
         </div>
     </section>
 
-    <!-- 大图展示区 - 已调整为1040×532尺寸 -->
+    <!-- 大图展示区 -->
     <section class="feature-banner">
         <div class="banner-container">
             <div class="banner-image">
-                <div class="banner-dev">
+                <div class="banner-device">
                     <div class="banner-screen">
-                        <!-- 替换位置2: banner主图 -->
-                        <img src="img/feature-banner.png">
+                        <i class="fas fa-cubes" style="font-size: 80px; margin-bottom: 30px;"></i>
                         <span>KM 全托管包网</span>
                     </div>
                 </div>
@@ -1278,14 +1278,14 @@
     <section class="horizontal-showcase">
         <div class="section-header">
             <h2>卓越服务介绍</h2>
+            <p>全方位解决方案，助力您的业务成功</p>
         </div>
         
         <div class="showcase-container">
             <!-- 横屏展示1 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <!-- 替换位置3: 综合后台图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%235e5ce6'/%3E%3Ccircle cx='150' cy='100' r='50' fill='white' opacity='0.3'/%3E%3Cpath d='M120,80 L150,120 L180,80 Z' fill='white'/%3E%3C/svg%3E" alt="创意工作区" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-chart-line" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="showcase-content">
                     <h3>综合后台</h3>
@@ -1310,16 +1310,14 @@
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <!-- 替换位置4: 财务整包图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%230a84ff'/%3E%3Ccircle cx='150' cy='100' r='50' fill='white' opacity='0.3'/%3E%3Cpath d='M100,80 L200,80 L150,150 Z' fill='white'/%3E%3C/svg%3E" alt="娱乐中心" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-wallet" style="font-size: 80px; color: white;"></i>
                 </div>
             </div>
             
             <!-- 横屏展示3 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <!-- 替换位置5: 运营托管图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%235e5ce6'/%3E%3Ccircle cx='150' cy='100' r='50' fill='white' opacity='0.3'/%3E%3Cpath d='M120,70 L150,130 L180,70 Z' fill='white'/%3E%3C/svg%3E" alt="数据分析" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-users-cog" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="showcase-content">
                     <h3>运营托管</h3>
@@ -1344,16 +1342,14 @@
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <!-- 替换位置6: 风控托管图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%230a84ff'/%3E%3Ccircle cx='150' cy='100' r='50' fill='white' opacity='0.3'/%3E%3Cpath d='M130,80 L150,130 L170,80 Z' fill='white'/%3E%3C/svg%3E" alt="健康中心" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-shield-alt" style="font-size: 80px; color: white;"></i>
                 </div>
             </div>
             
             <!-- 横屏展示5 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <!-- 替换位置7: 客服托管图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%235e5ce6'/%3E%3Ccircle cx='150' cy='100' r='50' fill='white' opacity='0.3'/%3E%3Cpath d='M120,100 L150,70 L180,100 L150,130 Z' fill='white'/%3E%3C/svg%3E" alt="云服务" style="width: 100%; height: 100%; object-fit: cover;">
+                    <i class="fas fa-headset" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="showcase-content">
                     <h3>客服托管</h3>
@@ -1378,8 +1374,7 @@
             <!-- 产品 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <!-- 替换位置8: 智能风控系统图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='80' fill='%231a1a1c'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%230a0a0c'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%230a84ff'/%3E%3Ctext x='100' y='100' text-anchor='middle' fill='white' font-size='20'%3E风控%3C/text%3E%3C/svg%3E" alt="智能风控系统" style="width: 180px; height: 180px;">
+                    <i class="fas fa-brain" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="product-content">
                     <h3>智能风控系统</h3>
@@ -1395,8 +1390,7 @@
             <!-- 产品 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <!-- 替换位置9: 多端同步技术图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect x='40' y='70' width='40' height='80' rx='20' fill='%231a1a1c'/%3E%3Crect x='120' y='70' width='40' height='80' rx='20' fill='%231a1a1c'/%3E%3C/svg%3E" alt="多端同步技术" style="width: 200px; height: 200px;">
+                    <i class="fas fa-sync-alt" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="product-content">
                     <h3>多端同步技术</h3>
@@ -1412,8 +1406,7 @@
             <!-- 产品 3 -->
             <div class="product-card">
                 <div class="product-image">
-                    <!-- 替换位置10: 安全支付系统图 -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='250' viewBox='0 0 140 250'%3E%3Crect width='140' height='250' rx='20' fill='%231a1a1c'/%3E%3Crect x='10' y='10' width='120' height='230' rx='15' fill='%230a84ff'/%3E%3Ctext x='70' y='130' text-anchor='middle' fill='white' font-size='20'%3E支付%3C/text%3E%3C/svg%3E" alt="安全支付系统" style="width: 140px; height: 250px;">
+                    <i class="fas fa-lock" style="font-size: 80px; color: white;"></i>
                 </div>
                 <div class="product-content">
                     <h3>安全支付系统</h3>
@@ -1509,8 +1502,12 @@
         
         <div class="vertical-container">
             <div class="vertical-image">
-                <!-- 替换位置11: 移动端体验图 -->
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='350' viewBox='0 0 200 350'%3E%3Crect width='200' height='350' rx='20' fill='%231a1a1c'/%3E%3Crect x='15' y='20' width='170' height='310' rx='15' fill='%230a84ff'/%3E%3Ctext x='100' y='175' text-anchor='middle' fill='white' font-size='20'%3EKM APP%3C/text%3E%3C/svg%3E" alt="竖屏体验" style="width: 200px; height: 350px;">
+                <div style="width: 200px; height: 400px; background: #1a1a1c; border-radius: 30px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                    <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: linear-gradient(135deg, #0a84ff, #5e5ce6); border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+                        <i class="fas fa-mobile-alt" style="font-size: 60px; margin-bottom: 30px;"></i>
+                        <span>KM APP</span>
+                    </div>
+                </div>
             </div>
             
             <div class="vertical-content">
@@ -1550,8 +1547,9 @@
             </div>
             
             <div class="horizontal-image">
-                <!-- 替换位置12: 后台管理图 -->
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='280' viewBox='0 0 500 280'%3E%3Crect width='500' height='280' rx='20' fill='%231a1a1c'/%3E%3Crect x='20' y='20' width='460' height='240' rx='10' fill='%230a84ff'/%3E%3Ctext x='250' y='140' text-anchor='middle' fill='white' font-size='24'%3E管理控制台%3C/text%3E%3C/svg%3E" alt="专业工作模式" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-desktop" style="font-size: 120px; color: white;"></i>
+                </div>
             </div>
         </div>
     </section>
@@ -1637,12 +1635,9 @@
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    // 移除所有活动状态
                     navLinks.forEach(l => l.classList.remove('active'));
-                    // 添加当前活动状态
                     this.classList.add('active');
                     
-                    // 滚动到对应部分
                     const sectionId = this.textContent.toLowerCase();
                     const section = document.getElementById(sectionId);
                     if(section) {
