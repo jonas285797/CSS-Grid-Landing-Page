@@ -3,6 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM包网 - iOS液态玻璃风格后台管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0071e3;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            background-attachment: fixed;
+        }
+
+        /* iOS液态玻璃风格导航 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            background: transparent;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* 主标题区域 - iOS液态玻璃风格 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+            backdrop-filter: blur(10px);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+            padding-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+            background: linear-gradient(90deg, #ffffff, #a0c8ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            max-width: 700px;
+            line-height: 1.4;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 30px;
+            font-size: 1.125rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* 后台管理部分 */
+        .dashboard-section {
+            padding: 7.5rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-header p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5rem;
+        }
+
+        /* 液态玻璃风格卡片 */
+        .dashboard-category {
+            background: var(--glass-bg);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: var(--glass-border);
+            transition: var(--transition);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .dashboard-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .category-icon i {
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.875rem;
+        }
+
+        /* 站点卡片 - 液态玻璃风格 */
+        .site-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 1.875rem;
+            border: var(--glass-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            box-shadow: var(--glass-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .site-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .site-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .site-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .site-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .site-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .site-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 6.25rem 5% 3.75rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto 3.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.875rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 2.1875rem;
+            border-radius: 30px;
+            font-size: 1.125rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 0 1.25rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.375rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header p {
+                font-size: 1.25rem;
+            }
+            
+            .dashboard-category {
+                padding: 1.875rem;
+            }
+            
+            .category-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 0.9375rem;
+                height: 60px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.125rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1.125rem;
+            }
+            
+            .dashboard-category {
+                padding: 1.25rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+            
+            .site-name {
+                font-size: 1.25rem;
+            }
+            
+            .footer h2 {
+                font-size: 2.5rem;
+            }
+            
+            .footer p {
+                font-size: 1.125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS液态玻璃风格导航 -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-cube"></i>
+            </div>
+            <span>KM包网管理平台</span>
+        </div>
+        <div class="nav-links">
+            <div class="nav-link active">首页</div>
+            <div class="nav-link">产品</div>
+            <div class="nav-link">演示站</div>
+            <div class="nav-link">成品站</div>
+            <div class="nav-link">支持</div>
+        </div>
+    </nav>
+
+    <!-- 主标题区域 -->
+    <section class="hero">
+        <div class="hero-content">
+           <h1>KM包网解决方案</h1>
+            <h2>专业娱乐平台托管服务</h2>
+            <p>包网2.0时代的引领者，提供移动端、web端、后台产品及运营、风控、客服、财务等全系列服务</p>
+            <a href="#dashboard" class="hero-cta">查看演示站</a>
+        </div>
+    </section>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KM全托管包网 - 包网2.0时代的引领者</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,23 +648,21 @@
         }
 
         :root {
-            --primary-color: #0a84ff;
-            --secondary-color: #5e5ce6;
-            --accent-color: #ff2d55;
-            --text-primary: #ffffff;
-            --text-secondary: #aeaeb2;
-            --bg-dark: #000000;
-            --card-bg: rgba(28, 28, 30, 0.65);
-            --card-border: rgba(99, 99, 102, 0.4);
+            --primary-color: #0071e3;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg-light: #f5f5f7;
+            --card-bg: #ffffff;
+            --card-border: #d2d2d7;
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --blur-bg: rgba(28, 28, 30, 0.7);
-            --section-1-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-2-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
-            --section-3-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-4-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
-            --section-5-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
-            --section-6-bg: linear-gradient(135deg, #0a0a0c, #151517, #252527);
-            --section-7-bg: linear-gradient(135deg, #0d0d0f, #1a1a1c, #2a2a2c);
+            --accent-color: #ff2d55;
+            --section-1-bg: #ffffff;
+            --section-2-bg: #f5f5f7;
+            --section-3-bg: #ffffff;
+            --section-4-bg: #f5f5f7;
+            --section-5-bg: #ffffff;
+            --section-6-bg: #f5f5f7;
+            --section-7-bg: #ffffff;
         }
 
         body {
@@ -39,79 +670,104 @@
             color: var(--text-primary);
             overflow-x: hidden;
             min-height: 100vh;
-            background-attachment: fixed;
             padding: 0;
+            line-height: 1.5;
         }
 
-        /* iOS 26风格导航 */
+        /* Apple风格导航 */
         .navbar {
             position: fixed;
-            top: 30px;
-            left: 40px;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
         .logo {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 10px;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 12px 20px;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            height: 70px;
-            width: auto;
         }
 
-        .logo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .logo img {
-            height: 40px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.1);
+        .logo-icon i {
+            color: white;
+            font-size: 20px;
         }
 
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 30px;
         }
 
         .nav-link {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 10px 20px;
-            font-size: 16px;
+            background: transparent;
+            padding: 8px 0;
+            font-size: 14px;
             font-weight: 500;
             color: var(--text-secondary);
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             color: var(--text-primary);
-            border-color: rgba(99, 99, 102, 0.7);
-            transform: translateY(-2px);
         }
 
-        /* 主标题区域 */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* 主标题区域 - Apple风格 */
         .hero {
             height: 100vh;
             display: flex;
@@ -122,32 +778,22 @@
             padding: 0 20px;
             position: relative;
             overflow: hidden;
-            background: var(--section-1-bg);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(10, 132, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
+            background: linear-gradient(to bottom, #f5f5f7, #ffffff);
         }
 
         .hero-content {
             max-width: 1000px;
             position: relative;
             z-index: 2;
+            padding-top: 60px;
         }
 
         .hero h1 {
-            font-size: 76px;
-            font-weight: 800;
+            font-size: 80px;
+            font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -2px;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
+            background: linear-gradient(to right, #1d1d1f, #333336);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -155,8 +801,8 @@
         }
 
         .hero h2 {
-            font-size: 32px;
-            font-weight: 500;
+            font-size: 28px;
+            font-weight: 400;
             margin-bottom: 30px;
             color: var(--text-secondary);
             animation: fadeInUp 1s ease-out 0.2s forwards;
@@ -168,7 +814,7 @@
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 20px;
             max-width: 700px;
             line-height: 1.6;
             color: var(--text-secondary);
@@ -179,74 +825,62 @@
             margin-right: auto;
         }
 
-        /* 大图展示区 */
+        .hero-cta {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta:hover {
+            background: #0077ed;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 113, 227, 0.3);
+        }
+
+        /* 大图展示区 - Apple风格 */
         .feature-banner {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-2-bg);
             position: relative;
-        }
-        
-        .feature-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(94, 92, 230, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-        
-        .banner-container {
-            max-width: 1400px;
-            margin: 0 auto;
             text-align: center;
         }
         
+        .banner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         .banner-image {
-            height: 532px;
-            width: 1040px;
+            height: 600px;
             max-width: 100%;
-            margin: 0 auto 40px;
-            border-radius: 30px;
+            margin: 0 auto 60px;
+            border-radius: 18px;
             overflow: hidden;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            perspective: 1500px;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
-        }
-        
-        .banner-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            background: white;
+            border: 1px solid #e0e0e0;
         }
         
         .banner-device {
-            width: 900px;
-            height: 500px;
-            background: #1a1a1c;
-            border-radius: 20px;
+            width: 100%;
+            height: 100%;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            transform-style: preserve-3d;
-            transform: rotateY(-10deg);
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .banner-device:hover {
-            transform: rotateY(0deg);
         }
         
         .banner-screen {
@@ -255,26 +889,25 @@
             left: 20px;
             right: 20px;
             bottom: 20px;
-            background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+            background: linear-gradient(135deg, #f5f5f7, #ffffff);
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: var(--text-primary);
+            border: 1px solid #eaeaea;
         }
         
-        .banner-screen img {
-            width: 120px;
-            height: 120px;
+        .banner-screen i {
+            font-size: 80px;
             margin-bottom: 30px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            color: var(--primary-color);
         }
         
         .banner-screen span {
             font-size: 42px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-weight: 600;
         }
         
         .banner-text {
@@ -285,39 +918,25 @@
         
         .banner-text h2 {
             font-size: 56px;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
+            color: var(--text-primary);
+            line-height: 1.1;
         }
         
         .banner-text h3 {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.4;
             margin-bottom: 30px;
         }
 
         /* 五个横屏图片展示区 */
         .horizontal-showcase {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-3-bg);
             position: relative;
-        }
-
-        .horizontal-showcase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 10% 90%, rgba(255, 45, 85, 0.1) 0%, transparent 60%);
-            z-index: -1;
         }
 
         .section-header {
@@ -326,17 +945,14 @@
         }
 
         .section-header h2 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--text-primary);
         }
 
         .section-header p {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto;
@@ -344,83 +960,55 @@
         }
 
         .showcase-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 60px;
+            gap: 80px;
         }
 
         .showcase-item {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
             background: var(--card-bg);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 40px;
             border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
             transition: var(--transition);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
 
         .showcase-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: rgba(99, 99, 102, 0.7);
-        }
-
-        .showcase-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 20%, rgba(94, 92, 230, 0.1) 0%, transparent 70%);
-            z-index: 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .showcase-image {
             flex: 1;
             height: 300px;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
-        }
-
-        .showcase-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            background: #f5f5f7;
+            border: 1px solid #e0e0e0;
         }
 
         .showcase-content {
             flex: 1;
             padding: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         .showcase-content h3 {
-            font-size: 36px;
+            font-size: 32px;
             margin-bottom: 20px;
             font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--text-primary);
         }
 
         .showcase-content p {
@@ -433,87 +1021,61 @@
         .showcase-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
 
         .showcase-tag {
-            background: rgba(94, 92, 230, 0.2);
-            color: #a2d2ff;
+            background: #f5f5f7;
+            color: var(--text-primary);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
             transition: var(--transition);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(162, 210, 255, 0.2);
+            border: 1px solid #e0e0e0;
         }
 
         .showcase-tag:hover {
-            background: rgba(94, 92, 230, 0.3);
-            transform: translateY(-2px);
+            background: #eaeaea;
         }
 
         /* 产品展示部分 */
         .products {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-4-bg);
             position: relative;
         }
 
-        .products::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(10, 132, 255, 0.05) 0%, transparent 60%);
-            z-index: -1;
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* 液态玻璃卡片 */
+        /* Apple风格卡片 */
         .product-card {
             background: var(--card-bg);
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 20%, rgba(94, 92, 230, 0.15) 0%, transparent 60%);
-            z-index: 0;
-        }
-
         .product-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: rgba(99, 99, 102, 0.7);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .product-image {
-            height: 320px;
+            height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -521,6 +1083,7 @@
             padding: 40px;
             position: relative;
             z-index: 1;
+            background: #f5f5f7;
         }
 
         .product-content {
@@ -533,7 +1096,7 @@
         }
 
         .product-card h3 {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 15px;
             font-weight: 700;
             color: var(--text-primary);
@@ -547,52 +1110,39 @@
             flex: 1;
         }
 
-        /* 液态玻璃标签 */
+        /* 产品标签 */
         .product-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
 
         .feature-tag {
-            background: rgba(94, 92, 230, 0.2);
-            color: #a2d2ff;
+            background: #f5f5f7;
+            color: var(--text-primary);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
             transition: var(--transition);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(162, 210, 255, 0.2);
+            border: 1px solid #e0e0e0;
         }
 
         .feature-tag:hover {
-            background: rgba(94, 92, 230, 0.3);
-            transform: translateY(-2px);
+            background: #eaeaea;
         }
 
         /* 技术规格 */
         .specs {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-5-bg);
             position: relative;
         }
 
-        .specs::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 30%, rgba(10, 132, 255, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -602,53 +1152,39 @@
             text-align: center;
             padding: 40px 30px;
             background: var(--card-bg);
-            border-radius: 26px;
+            border-radius: 20px;
             border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
             transition: var(--transition);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
 
         .spec-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-            border-color: rgba(99, 99, 102, 0.7);
-        }
-
-        .spec-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 45, 85, 0.1) 0%, transparent 70%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .spec-item .icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
             font-size: 30px;
+            color: white;
             position: relative;
             z-index: 1;
         }
 
         .spec-item .number {
             font-size: 42px;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--text-primary);
             position: relative;
             z-index: 1;
         }
@@ -660,89 +1196,62 @@
             z-index: 1;
         }
 
-        /* 动态玻璃卡片区域 */
+        /* 核心价值卡片区域 */
         .glass-cards-section {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-7-bg);
             position: relative;
-        }
-
-        .glass-cards-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 20%, rgba(10, 132, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
         }
 
         .glass-cards-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .glass-card {
             background: var(--card-bg);
-            border-radius: 30px;
+            border-radius: 20px;
             border: 1px solid var(--card-border);
             padding: 40px;
-            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
             transition: var(--transition);
             transform: translateY(0);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
         }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(600px at 20% 20%, rgba(94, 92, 230, 0.15) 0%, transparent 80%);
-            z-index: 0;
-            transition: var(--transition);
-        }
-
         .glass-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .glass-card:hover::before {
-            background: radial-gradient(600px at 20% 20%, rgba(94, 92, 230, 0.25) 0%, transparent 80%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .glass-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
-            font-size: 36px;
+            font-size: 30px;
+            color: white;
             position: relative;
             z-index: 1;
             transition: var(--transition);
         }
 
         .glass-card:hover .glass-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1);
         }
 
         .glass-card h3 {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 20px;
             color: var(--text-primary);
             position: relative;
@@ -760,37 +1269,15 @@
             transition: var(--transition);
         }
 
-        .glass-card:hover h3 {
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .glass-card:hover p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* 新增9:16比例展示区 */
+        /* 竖屏体验区 */
         .vertical-showcase {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-6-bg);
             position: relative;
         }
 
-        .vertical-showcase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(94, 92, 230, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-
         .vertical-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -800,24 +1287,15 @@
         .vertical-image {
             flex: 1;
             height: 600px;
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .vertical-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
         }
 
         .vertical-content {
@@ -826,18 +1304,15 @@
         }
 
         .vertical-content h2 {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 30px;
             font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
+            color: var(--text-primary);
+            line-height: 1.1;
         }
 
         .vertical-content h3 {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 20px;
             color: var(--text-primary);
         }
@@ -851,10 +1326,9 @@
 
         .vertical-summary {
             padding: 25px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
+            background: #f5f5f7;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
         }
 
         .vertical-summary p {
@@ -864,26 +1338,15 @@
             font-weight: 500;
         }
 
-        /* 新增的16:9比例展示区 */
+        /* 横屏创新区 */
         .horizontal-feature {
-            padding: 100px 5%;
+            padding: 120px 5%;
             background: var(--section-5-bg);
             position: relative;
         }
 
-        .horizontal-feature::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 50%, rgba(255, 45, 85, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-
         .horizontal-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -896,18 +1359,15 @@
         }
 
         .horizontal-content h2 {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 30px;
             font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
+            color: var(--text-primary);
+            line-height: 1.1;
         }
 
         .horizontal-content h3 {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 20px;
             color: var(--text-primary);
         }
@@ -921,10 +1381,9 @@
 
         .horizontal-summary {
             padding: 25px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
+            background: #f5f5f7;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
         }
 
         .horizontal-summary p {
@@ -937,46 +1396,25 @@
         .horizontal-image {
             flex: 1;
             height: 400px;
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(45deg, #0a84ff, #5e5ce6);
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .horizontal-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
         }
 
         /* 页脚 */
         .footer {
-            background: var(--blur-bg);
+            background: #f5f5f7;
             padding: 100px 5% 60px;
             text-align: center;
-            border-top: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
+            border-top: 1px solid #e0e0e0;
             position: relative;
             overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 20%, rgba(10, 132, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
         }
 
         .footer-content {
@@ -987,17 +1425,14 @@
         }
 
         .footer h2 {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 30px;
             font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #a2d2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--text-primary);
         }
 
         .footer p {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--text-secondary);
             margin-bottom: 40px;
             line-height: 1.6;
@@ -1007,45 +1442,27 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #0088cc;
+            background: var(--primary-color);
             color: white;
             padding: 15px 30px;
             border-radius: 30px;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .telegram-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .telegram-btn:hover::before {
-            left: 100%;
         }
 
         .telegram-btn:hover {
-            background: #006699;
+            background: #0077ed;
             transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 113, 227, 0.3);
         }
 
         .copyright {
             color: var(--text-secondary);
             font-size: 16px;
             padding-top: 40px;
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid #e0e0e0;
             position: relative;
             z-index: 1;
         }
@@ -1059,18 +1476,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
             }
         }
         
@@ -1097,50 +1502,43 @@
                 max-width: 600px;
                 margin-bottom: 40px;
             }
-        }
-
-        @media (max-width: 1100px) {
-            .banner-image {
-                width: 90%;
-                height: auto;
-                aspect-ratio: 1040/532;
-            }
             
-            .banner-device {
-                width: 85%;
-                height: auto;
-                aspect-ratio: 16/9;
+            .hero h1 {
+                font-size: 64px;
             }
         }
 
         @media (max-width: 900px) {
-            .hero h1 {
-                font-size: 56px;
-            }
-            
-            .hero h2 {
-                font-size: 26px;
-            }
-            
-            .hero p {
-                font-size: 20px;
-            }
-            
-            .section-header h2 {
-                font-size: 36px;
-            }
-            
-            .section-header p {
-                font-size: 18px;
-            }
-            
             .navbar {
-                left: 20px;
-                top: 20px;
+                padding: 0 20px;
             }
             
             .nav-links {
                 display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero h2 {
+                font-size: 22px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 40px;
+            }
+            
+            .section-header p {
+                font-size: 20px;
             }
             
             .showcase-item {
@@ -1153,22 +1551,15 @@
             }
             
             .banner-image {
-                height: auto;
-                aspect-ratio: 1040/532;
-            }
-            
-            .banner-device {
-                width: 90%;
-                height: auto;
-                aspect-ratio: 16/9;
+                height: 400px;
             }
             
             .banner-text h2 {
-                font-size: 42px;
+                font-size: 40px;
             }
             
             .banner-text h3 {
-                font-size: 32px;
+                font-size: 22px;
             }
             
             .glass-cards-container {
@@ -1178,19 +1569,27 @@
 
         @media (max-width: 600px) {
             .hero h1 {
-                font-size: 42px;
+                font-size: 36px;
             }
             
             .hero h2 {
-                font-size: 22px;
+                font-size: 18px;
             }
             
             .hero p {
+                font-size: 16px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .section-header p {
                 font-size: 18px;
             }
             
             .product-card h3 {
-                font-size: 24px;
+                font-size: 20px;
             }
             
             .product-card p {
@@ -1202,18 +1601,11 @@
             }
             
             .showcase-content h3 {
-                font-size: 28px;
+                font-size: 24px;
             }
             
             .banner-image {
-                height: auto;
-                aspect-ratio: 1040/532;
-            }
-            
-            .banner-device {
-                width: 95%;
-                height: auto;
-                aspect-ratio: 16/9;
+                height: 300px;
             }
             
             .banner-text h2 {
@@ -1221,34 +1613,51 @@
             }
             
             .banner-text h3 {
-                font-size: 24px;
+                font-size: 18px;
             }
             
             .spec-item .number {
                 font-size: 36px;
             }
+            
+            .footer h2 {
+                font-size: 40px;
+            }
+            
+            .footer p {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- iOS 26风格导航 -->
+    <!-- Apple风格导航 -->
     <nav class="navbar">
         <div class="logo">
-            <div class="logo-icon" style="width: 40px; height: 40px; background: linear-gradient(135deg, #0a84ff, #5e5ce6); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-cube" style="color: white; font-size: 24px;"></i>
+            <div class="logo-icon">
+                <i class="fas fa-cube"></i>
             </div>
             <span>KM全托管包网</span>
         </div>
         <div class="nav-links">
+            <div class="nav-link active" data-target="hero">首页</div>
+            <div class="nav-link" data-target="products">产品</div>
+            <div class="nav-link" data-target="showcase">设计</div>
+            <div class="nav-link" data-target="specs">技术</div>
+            <div class="nav-link" data-target="contact">支持</div>
         </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
 
     <!-- 主标题区域 -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-           <h1>KM包网是什么？</h1>
-            <h2>KM包网是全球综合娱乐包网</h2>
-            <p>包网2.0时代的引领者，不仅为平台提供移动端、web端、后台产品，也为平台提供运营、风控、客服、财务等全系列服务</p>
+           <h1>KM包网解决方案</h1>
+            <h2>重新定义娱乐平台托管服务</h2>
+            <p>包网2.0时代的引领者，提供移动端、web端、后台产品及运营、风控、客服、财务等全系列服务</p>
+            <a href="#products" class="hero-cta">探索产品</a>
         </div>
     </section>
 
@@ -1258,38 +1667,38 @@
             <div class="banner-image">
                 <div class="banner-device">
                     <div class="banner-screen">
-                        <i class="fas fa-cubes" style="font-size: 80px; margin-bottom: 30px;"></i>
+                        <i class="fas fa-cubes"></i>
                         <span>KM 全托管包网</span>
                     </div>
                 </div>
             </div>
             <div class="banner-text">
-                <h2>基础服务</h2>
-                <h3>KM包网的基础产品包括Android、ios、web三端产品，集成了市面上最顶级的三方游戏场馆。</h3>
+                <h2>一体化服务平台</h2>
+                <h3>提供Android、iOS、Web三端产品，集成顶级三方游戏场馆，打造无缝娱乐体验</h3>
             </div>
         </div>
     </section>
 
     <!-- 五个横屏图片展示区 -->
-    <section class="horizontal-showcase">
+    <section class="horizontal-showcase" id="showcase">
         <div class="section-header">
-            <h2>卓越服务介绍</h2>
-            <p>全方位解决方案，助力您的业务成功</p>
+            <h2>卓越服务</h2>
+            <p>全方位解决方案，助力业务成功</p>
         </div>
         
         <div class="showcase-container">
             <!-- 横屏展示1 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-chart-line" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-chart-line" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="showcase-content">
-                    <h3>综合后台</h3>
-                    <p>KM包网提供业界最全面、操作最便捷、体验最友好的综合后台系统，助您轻松管理您的网站。</p>
+                    <h3>综合后台系统</h3>
+                    <p>业界最全面、操作最便捷的综合后台系统，助您轻松管理整个平台运营。</p>
                     <div class="showcase-features">
-                        <span class="showcase-tag">最全面</span>
-                        <span class="showcase-tag">最便捷</span>
-                        <span class="showcase-tag">最友好</span>
+                        <span class="showcase-tag">数据可视化</span>
+                        <span class="showcase-tag">实时监控</span>
+                        <span class="showcase-tag">多维度分析</span>
                     </div>
                 </div>
             </div>
@@ -1297,31 +1706,31 @@
             <!-- 横屏展示2 -->
             <div class="showcase-item">
                 <div class="showcase-content">
-                    <h3>财务整包</h3>
-                    <p>KM包网集成了超过1000家安全财务通道，其中包括迄今为止最安全快捷的P2P撮合交易系统。</p>
+                    <h3>财务整包方案</h3>
+                    <p>集成超过1000家安全财务通道，提供最安全快捷的P2P撮合交易系统。</p>
                     <div class="showcase-features">
-                        <span class="showcase-tag">超1000+</span>
-                        <span class="showcase-tag">最安全快捷</span>
+                        <span class="showcase-tag">超1000+通道</span>
                         <span class="showcase-tag">P2P交易</span>
+                        <span class="showcase-tag">实时结算</span>
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <i class="fas fa-wallet" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-wallet" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
             </div>
             
             <!-- 横屏展示3 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-users-cog" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-users-cog" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="showcase-content">
-                    <h3>运营托管</h3>
-                    <p>KM包网支持托管式运营，为您提供详实的数据报表、活动策划、运营咨询服务，轻松运营您的网站。</p>
+                    <h3>运营托管服务</h3>
+                    <p>提供详实数据报表、活动策划及运营咨询，让您轻松运营整个平台。</p>
                     <div class="showcase-features">
-                        <span class="showcase-tag">托管式运营</span>
-                        <span class="showcase-tag">数据可视化</span>
-                        <span class="showcase-tag">活动策划支持</span>
+                        <span class="showcase-tag">数据分析</span>
+                        <span class="showcase-tag">活动策划</span>
+                        <span class="showcase-tag">增长策略</span>
                     </div>
                 </div>
             </div>
@@ -1329,31 +1738,31 @@
             <!-- 横屏展示4 -->
             <div class="showcase-item">
                 <div class="showcase-content">
-                    <h3>风控托管</h3>
-                    <p>KM包网采用最权威的大数据风控模型，跨平台共享风控数据，最大限度的保障公平合理的游戏规则。</p>
+                    <h3>智能风控系统</h3>
+                    <p>采用权威大数据风控模型，跨平台共享数据，保障公平合理的游戏规则。</p>
                     <div class="showcase-features">
-                        <span class="showcase-tag">大数据风控模型</span>
-                        <span class="showcase-tag">跨平台共享</span>
-                        <span class="showcase-tag">保障公平合理</span>
+                        <span class="showcase-tag">AI风控</span>
+                        <span class="showcase-tag">实时监测</span>
+                        <span class="showcase-tag">数据共享</span>
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <i class="fas fa-shield-alt" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-shield-alt" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
             </div>
             
             <!-- 横屏展示5 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-headset" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-headset" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="showcase-content">
-                    <h3>客服托管</h3>
-                    <p>KM包网支持客服托管，专业客服团队7×24小时为玩家提供答疑，解决玩家遇到的所有问题。</p>
+                    <h3>专业客服支持</h3>
+                    <p>7×24小时专业客服团队，为玩家提供全天候答疑与问题解决服务。</p>
                     <div class="showcase-features">
-                        <span class="showcase-tag">客服托管</span>
-                        <span class="showcase-tag">7×24小时</span>
-                        <span class="showcase-tag">多设备支持</span>
+                        <span class="showcase-tag">全天候支持</span>
+                        <span class="showcase-tag">多语言服务</span>
+                        <span class="showcase-tag">快速响应</span>
                     </div>
                 </div>
             </div>
@@ -1361,22 +1770,22 @@
     </section>
 
     <!-- 产品展示部分 -->
-    <section class="products">
+    <section class="products" id="products">
         <div class="section-header">
             <h2>技术优势</h2>
-            <p>采用最前沿的技术架构，保障平台稳定运行</p>
+            <p>前沿技术架构保障平台稳定运行</p>
         </div>
         <div class="products-grid">
             <!-- 产品 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-brain" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-brain" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="product-content">
                     <h3>智能风控系统</h3>
-                    <p>采用AI驱动的实时风控系统，毫秒级响应异常行为，保障平台安全稳定运行，减少欺诈风险。</p>
+                    <p>AI驱动的实时风控系统，毫秒级响应异常行为，保障平台安全稳定运行。</p>
                     <div class="product-features">
-                        <span class="feature-tag">AI驱动</span>
+                        <span class="feature-tag">AI算法</span>
                         <span class="feature-tag">实时监控</span>
                         <span class="feature-tag">毫秒响应</span>
                     </div>
@@ -1386,11 +1795,11 @@
             <!-- 产品 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-sync-alt" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-sync-alt" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="product-content">
                     <h3>多端同步技术</h3>
-                    <p>实现Android、iOS、Web三端数据实时同步，玩家可在任何设备上无缝切换，体验一致。</p>
+                    <p>实现Android、iOS、Web三端数据实时同步，提供一致的用户体验。</p>
                     <div class="product-features">
                         <span class="feature-tag">三端同步</span>
                         <span class="feature-tag">实时数据</span>
@@ -1402,13 +1811,13 @@
             <!-- 产品 3 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-lock" style="font-size: 80px; color: white;"></i>
+                    <i class="fas fa-lock" style="font-size: 80px; color: var(--primary-color);"></i>
                 </div>
                 <div class="product-content">
                     <h3>安全支付系统</h3>
-                    <p>集成1000+安全支付通道，支持P2P撮合交易，保障资金安全，处理速度提升300%。</p>
+                    <p>集成1000+安全支付通道，支持P2P撮合交易，保障资金安全。</p>
                     <div class="product-features">
-                        <span class="feature-tag">安全支付</span>
+                        <span class="feature-tag">安全加密</span>
                         <span class="feature-tag">P2P交易</span>
                         <span class="feature-tag">极速处理</span>
                     </div>
@@ -1418,10 +1827,10 @@
     </section>
 
     <!-- 技术规格 -->
-    <section class="specs">
+    <section class="specs" id="specs">
         <div class="section-header">
             <h2>平台数据</h2>
-            <p>KM包网的卓越表现</p>
+            <p>行业领先的性能表现</p>
         </div>
         <div class="specs-grid">
             <div class="spec-item">
@@ -1450,16 +1859,16 @@
                     <i class="fas fa-gamepad"></i>
                 </div>
                 <div class="number">100+</div>
-                <div class="label">集成游戏场馆</div>
+                <div class="label">游戏场馆</div>
             </div>
         </div>
     </section>
 
-    <!-- 动态玻璃卡片区域 -->
+    <!-- 核心价值卡片区域 -->
     <section class="glass-cards-section">
         <div class="section-header">
             <h2>核心价值</h2>
-            <p>KM包网为企业带来的独特优势</p>
+            <p>为企业带来的独特优势</p>
         </div>
         
         <div class="glass-cards-container">
@@ -1468,7 +1877,7 @@
                     <i class="fas fa-rocket"></i>
                 </div>
                 <h3>快速上线</h3>
-                <p>7天内完成平台搭建和部署，快速进入市场，抢占先机，降低时间成本。</p>
+                <p>7天内完成平台搭建部署，快速进入市场抢占先机，大幅降低时间成本。</p>
             </div>
             
             <div class="glass-card">
@@ -1476,7 +1885,7 @@
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <h3>安全保障</h3>
-                <p>多重安全防护机制，包括DDoS防护、数据加密和实时监控，保障平台安全。</p>
+                <p>多重安全防护机制，包括DDoS防护、数据加密和实时监控，全面保障平台安全。</p>
             </div>
             
             <div class="glass-card">
@@ -1493,29 +1902,29 @@
     <section class="vertical-showcase">
         <div class="section-header">
             <h2>移动体验</h2>
-            <p>9:16比例的沉浸式视觉体验</p>
+            <p>精心优化的移动端用户体验</p>
         </div>
         
         <div class="vertical-container">
             <div class="vertical-image">
-                <div style="width: 200px; height: 400px; background: #1a1a1c; border-radius: 30px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-                    <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: linear-gradient(135deg, #0a84ff, #5e5ce6); border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
-                        <i class="fas fa-mobile-alt" style="font-size: 60px; margin-bottom: 30px;"></i>
+                <div style="width: 200px; height: 400px; background: white; border-radius: 30px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e0e0e0;">
+                    <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: #f5f5f7; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--text-primary); border: 1px solid #e0e0e0;">
+                        <i class="fas fa-mobile-alt" style="font-size: 60px; margin-bottom: 30px; color: var(--primary-color);"></i>
                         <span>KM APP</span>
                     </div>
                 </div>
             </div>
             
             <div class="vertical-content">
-                <h2>移动端优化体验</h2>
-                <h3>流畅的移动操作</h3>
-                <p>针对移动设备深度优化，提供流畅的操作体验和直观的界面设计，让玩家随时随地享受游戏乐趣。</p>
+                <h2>卓越移动体验</h2>
+                <h3>流畅操作体验</h3>
+                <p>针对移动设备深度优化，提供流畅操作和直观界面设计，让玩家随时随地享受游戏乐趣。</p>
                 
-                <h3>个性化推荐</h3>
-                <p>基于用户行为的智能推荐系统，精准推送玩家感兴趣的游戏内容，提升用户粘性和活跃度。</p>
+                <h3>智能个性化推荐</h3>
+                <p>基于用户行为的智能推荐系统，精准推送感兴趣的游戏内容，提升用户粘性和活跃度。</p>
                 
                 <div class="vertical-summary">
-                    <p>KM移动端应用下载量已超过500万次，用户满意度达98%，成为行业移动体验标杆。</p>
+                    <p>KM移动应用下载量已超过500万次，用户满意度达98%，成为行业移动体验标杆。</p>
                 </div>
             </div>
         </div>
@@ -1525,16 +1934,16 @@
     <section class="horizontal-feature">
         <div class="section-header">
             <h2>后台管理</h2>
-            <p>16:9比例的专业级控制台</p>
+            <p>专业级控制台与管理工具</p>
         </div>
         
         <div class="horizontal-container">
             <div class="horizontal-content">
                 <h2>专业管理控制台</h2>
-                <h3>数据可视化</h3>
+                <h3>数据可视化分析</h3>
                 <p>直观的数据仪表盘，实时展示关键业务指标，帮助管理者快速掌握平台运营状况。</p>
                 
-                <h3>精细化运营</h3>
+                <h3>精细化运营工具</h3>
                 <p>提供用户分群、活动管理、内容推送等精细化运营工具，提升用户留存和付费转化。</p>
                 
                 <div class="horizontal-summary">
@@ -1544,7 +1953,148 @@
             
             <div class="horizontal-image">
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-desktop" style="font-size: 120px; color: white;"></i>
+                    <i class="fas fa-desktop" style="font-size: 120px; color: var(--primary-color);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 后台管理部分 -->
+    <section class="dashboard-section" id="dashboard">
+        <div class="section-header">
+            <h2>后台管理系统</h2>
+            <p>演示站与成品站展示</p>
+        </div>
+        
+        <div class="dashboard-container">
+            <!-- 包网演示站 -->
+            <div class="dashboard-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h2 class="category-title">包网演示站</h2>
+                </div>
+                <p class="category-description">探索我们的综合包网和三合系包网演示站点，体验完整的管理功能和用户界面</p>
+                
+                <div class="sites-grid">
+                    <!-- 综合包网 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="site-name">综合包网</div>
+                        </div>
+                        <div class="site-url">www.kmvip.com, www.kmbw.vip</div>
+                        <div class="site-buttons">
+                            <a href="http://www.kmvip.com" target="_blank" class="site-button">
+                                <i class="fas fa-external-link-alt"></i> 访问主站
+                            </a>
+                            <a href="http://www.kmbw.vip" target="_blank" class="site-button ghost">
+                                <i class="fas fa-mobile-alt"></i> 移动端
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 三合系包网 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="site-name">三合系包网</div>
+                        </div>
+                        <div class="site-url">site5024-h5.pepro6.com, site5024-web.pepro6.com</div>
+                        <div class="site-buttons">
+                            <a href="https://site5024-web.pepro6.com" target="_blank" class="site-button">
+                                <i class="fas fa-desktop"></i> Web端
+                            </a>
+                            <a href="https://site5024-h5.pepro6.com" target="_blank" class="site-button ghost">
+                                <i class="fas fa-mobile-alt"></i> H5端
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- U站 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="site-name">U站</div>
+                        </div>
+                        <div class="site-url">site5026-web.pepro6.com, site5026-h5.pepro6.com</div>
+                        <div class="site-buttons">
+                            <a href="https://site5026-web.pepro6.com/app/home" target="_blank" class="site-button">
+                                <i class="fas fa-home"></i> 首页
+                            </a>
+                            <a href="https://site5026-h5.pepro6.com/entry/login" target="_blank" class="site-button ghost">
+                                <i class="fas fa-sign-in-alt"></i> 登录页
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 成品站 -->
+            <div class="dashboard-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2 class="category-title">成品站</h2>
+                </div>
+                <p class="category-description">已上线的成熟体育平台，展示我们的技术实力和用户体验设计</p>
+                
+                <div class="sites-grid">
+                    <!-- 派亿体育 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="site-name">派亿体育</div>
+                        </div>
+                        <div class="site-url">p1ty.com</div>
+                        <div class="site-buttons">
+                            <a href="http://p1ty.com" target="_blank" class="site-button">
+                                <i class="fas fa-external-link-alt"></i> 访问网站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 木森体育 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <div class="site-name">木森体育</div>
+                        </div>
+                        <div class="site-url">ms368.com</div>
+                        <div class="site-buttons">
+                            <a href="http://ms368.com" target="_blank" class="site-button">
+                                <i class="fas fa-external-link-alt"></i> 访问网站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 红8体育 -->
+                    <div class="site-card">
+                        <div class="site-header">
+                            <div class="site-icon">
+                                <i class="fas fa-football-ball"></i>
+                            </div>
+                            <div class="site-name">红8体育</div>
+                        </div>
+                        <div class="site-url">h8ty.com</div>
+                        <div class="site-buttons">
+                            <a href="http://h8ty.com" target="_blank" class="site-button">
+                                <i class="fas fa-external-link-alt"></i> 访问网站
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1566,79 +2116,26 @@
     </footer>
 
     <script>
-        // 滚动动画效果
         document.addEventListener('DOMContentLoaded', function() {
-            const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.product-card, .spec-item, .showcase-item, .banner-image, .section-header, .vertical-container, .horizontal-container, .glass-card');
-                
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight * 0.85) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-            
-            // 初始隐藏元素
-            const elements = document.querySelectorAll('.product-card, .spec-item, .showcase-item, .banner-image, .section-header, .vertical-container, .horizontal-container, .glass-card');
-            elements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            // 导航栏滚动效果
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             });
             
-            // 添加滚动监听
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // 初始触发一次
-            animateOnScroll();
-            
-            // 设备浮动效果
-            const devices = document.querySelectorAll('.banner-device, .showcase-image, .vertical-image, .horizontal-image');
-            devices.forEach((device, index) => {
-                device.style.animation = `float ${4 + index * 0.5}s ease-in-out infinite`;
-            });
-            
-            // 卡片悬停效果增强
-            const glassCards = document.querySelectorAll('.glass-card');
-            glassCards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const cardRect = this.getBoundingClientRect();
-                    const x = e.clientX - cardRect.left;
-                    const y = e.clientY - cardRect.top;
-                    
-                    const centerX = cardRect.width / 2;
-                    const centerY = cardRect.height / 2;
-                    
-                    const angleY = (x - centerX) / 25;
-                    const angleX = (centerY - y) / 25;
-                    
-                    this.style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) translateY(-10px)`;
+            // 卡片悬停效果
+            const cards = document.querySelectorAll('.site-card, .dashboard-category');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(-10px)';
-                    setTimeout(() => {
-                        this.style.transform = 'translateY(0)';
-                    }, 300);
-                });
-            });
-
-            // 导航菜单点击效果
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const sectionId = this.textContent.toLowerCase();
-                    const section = document.getElementById(sectionId);
-                    if(section) {
-                        section.scrollIntoView({behavior: 'smooth'});
-                    }
+                    this.style.transform = 'translateY(0)';
                 });
             });
         });
