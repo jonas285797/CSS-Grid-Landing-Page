@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KM包网 - iOS液态玻璃风格后台管理</title>
-    <link rel="https://www.kmvip11.com:30000/SKG-logo.eb250233.webp">
-    <link href="https://www.kmvip11.com:30000/SKG-logo.eb250233.webp" rel="stylesheet">
+    <!-- 图片链接配置 -->
+    <script>
+        const IMAGE_CONFIG = {
+            logo: "https://www.kmvip11.com:30000/SKG-logo.eb250233.webp",
+            icons: {
+                cube: "https://cdn-icons-png.flaticon.com/512/1969/1969739.png",
+                cubes: "https://cdn-icons-png.flaticon.com/512/1076/1076928.png",
+                brain: "https://cdn-icons-png.flaticon.com/512/942/942799.png",
+                sync: "https://cdn-icons-png.flaticon.com/512/809/809052.png",
+                lock: "https://cdn-icons-png.flaticon.com/512/2889/2889676.png",
+                server: "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+                bolt: "https://cdn-icons-png.flaticon.com/512/1828/1828906.png",
+                users: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
+                gamepad: "https://cdn-icons-png.flaticon.com/512/141/141070.png",
+                mobile: "https://cdn-icons-png.flaticon.com/512/254/254409.png",
+                desktop: "https://cdn-icons-png.flaticon.com/512/2965/2965278.png",
+                laptop: "https://cdn-icons-png.flaticon.com/512/3663/3663394.png",
+                rocket: "https://cdn-icons-png.flaticon.com/512/3069/3069172.png",
+                sports: {
+                    p1ty: "https://cdn-icons-png.flaticon.com/512/857/857418.png",
+                    ms368: "https://cdn-icons-png.flaticon.com/512/857/857419.png",
+                    h8ty: "https://cdn-icons-png.flaticon.com/512/857/857422.png"
+                },
+                sites: {
+                    general: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
+                    triple: "https://cdn-icons-png.flaticon.com/512/2452/2452494.png",
+                    uSite: "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -83,9 +113,9 @@
             box-shadow: var(--glass-shadow);
         }
 
-        .logo-icon i {
-            color: white;
-            font-size: 22px;
+        .logo-icon img {
+            width: 24px;
+            height: 24px;
         }
 
         .nav-links {
@@ -309,10 +339,10 @@
             backdrop-filter: blur(10px);
         }
         
-        .banner-screen i {
-            font-size: 80px;
+        .banner-screen img {
+            width: 80px;
+            height: 80px;
             margin-bottom: 30px;
-            color: var(--primary-color);
         }
         
         .banner-screen span {
@@ -422,6 +452,11 @@
             backdrop-filter: blur(5px);
         }
 
+        .showcase-image img {
+            width: 80px;
+            height: 80px;
+        }
+
         .showcase-content {
             flex: 1;
             padding: 20px;
@@ -518,6 +553,11 @@
             position: relative;
             z-index: 1;
             background: rgba(245, 245, 247, 0.15);
+        }
+
+        .product-image img {
+            width: 80px;
+            height: 80px;
         }
 
         .product-content {
@@ -622,6 +662,11 @@
             color: white;
             position: relative;
             z-index: 1;
+        }
+
+        .spec-item .icon img {
+            width: 30px;
+            height: 30px;
         }
 
         .spec-item .number {
@@ -1327,7 +1372,7 @@
     <nav class="navbar">
         <div class="logo">
             <div class="logo-icon">
-                <i class="fas fa-cube"></i>
+                <img src="IMAGE_CONFIG.icons.cube" alt="KM包网logo">
             </div>
             <span>KM全托管包网</span>
         </div>
@@ -1359,7 +1404,7 @@
             <div class="banner-image">
                 <div class="banner-device">
                     <div class="banner-screen">
-                        <i class="fas fa-cubes"></i>
+                        <img src="IMAGE_CONFIG.icons.cubes" alt="KM全托管包网">
                         <span>KM 全托管包网</span>
                     </div>
                 </div>
@@ -1382,7 +1427,7 @@
             <!-- 横屏展示1 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-chart-line" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.brain" alt="综合后台系统">
                 </div>
                 <div class="showcase-content">
                     <h3>综合后台系统</h3>
@@ -1407,14 +1452,14 @@
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <i class="fas fa-wallet" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.lock" alt="财务整包方案">
                 </div>
             </div>
             
             <!-- 横屏展示3 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-users-cog" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.users" alt="运营托管服务">
                 </div>
                 <div class="showcase-content">
                     <h3>运营托管服务</h3>
@@ -1439,14 +1484,14 @@
                     </div>
                 </div>
                 <div class="showcase-image">
-                    <i class="fas fa-shield-alt" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.server" alt="智能风控系统">
                 </div>
             </div>
             
             <!-- 横屏展示5 -->
             <div class="showcase-item">
                 <div class="showcase-image">
-                    <i class="fas fa-headset" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.gamepad" alt="专业客服支持">
                 </div>
                 <div class="showcase-content">
                     <h3>专业客服支持</h3>
@@ -1471,7 +1516,7 @@
             <!-- 产品 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-brain" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.brain" alt="智能风控系统">
                 </div>
                 <div class="product-content">
                     <h3>智能风控系统</h3>
@@ -1487,7 +1532,7 @@
             <!-- 产品 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-sync-alt" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.sync" alt="多端同步技术">
                 </div>
                 <div class="product-content">
                     <h3>多端同步技术</h3>
@@ -1503,7 +1548,7 @@
             <!-- 产品 3 -->
             <div class="product-card">
                 <div class="product-image">
-                    <i class="fas fa-lock" style="font-size: 80px; color: var(--primary-color);"></i>
+                    <img src="IMAGE_CONFIG.icons.lock" alt="安全支付系统">
                 </div>
                 <div class="product-content">
                     <h3>安全支付系统</h3>
@@ -1527,28 +1572,28 @@
         <div class="specs-grid">
             <div class="spec-item">
                 <div class="icon">
-                    <i class="fas fa-server"></i>
+                    <img src="IMAGE_CONFIG.icons.server" alt="平台稳定性">
                 </div>
                 <div class="number">99.99%</div>
                 <div class="label">平台稳定性</div>
             </div>
             <div class="spec-item">
                 <div class="icon">
-                    <i class="fas fa-bolt"></i>
+                    <img src="IMAGE_CONFIG.icons.bolt" alt="响应速度">
                 </div>
                 <div class="number">20ms</div>
                 <div class="label">响应速度</div>
             </div>
             <div class="spec-item">
                 <div class="icon">
-                    <i class="fas fa-users"></i>
+                    <img src="IMAGE_CONFIG.icons.users" alt="日活跃用户">
                 </div>
                 <div class="number">100万+</div>
                 <div class="label">日活跃用户</div>
             </div>
             <div class="spec-item">
                 <div class="icon">
-                    <i class="fas fa-gamepad"></i>
+                    <img src="IMAGE_CONFIG.icons.gamepad" alt="游戏场馆">
                 </div>
                 <div class="number">100+</div>
                 <div class="label">游戏场馆</div>
@@ -1566,7 +1611,7 @@
         <div class="glass-cards-container">
             <div class="glass-card">
                 <div class="glass-icon">
-                    <i class="fas fa-rocket"></i>
+                    <img src="IMAGE_CONFIG.icons.rocket" alt="快速上线">
                 </div>
                 <h3>快速上线</h3>
                 <p>7天内完成平台搭建部署，快速进入市场抢占先机，大幅降低时间成本。</p>
@@ -1574,7 +1619,7 @@
             
             <div class="glass-card">
                 <div class="glass-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <img src="IMAGE_CONFIG.icons.lock" alt="安全保障">
                 </div>
                 <h3>安全保障</h3>
                 <p>多重安全防护机制，包括DDoS防护、数据加密和实时监控，全面保障平台安全。</p>
@@ -1582,7 +1627,7 @@
             
             <div class="glass-card">
                 <div class="glass-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <img src="IMAGE_CONFIG.icons.brain" alt="持续增长">
                 </div>
                 <h3>持续增长</h3>
                 <p>专业运营团队提供数据分析和增长策略，助力平台用户和收入持续增长。</p>
@@ -1601,7 +1646,7 @@
             <div class="vertical-image">
                 <div style="width: 200px; height: 400px; background: rgba(255, 255, 255, 0.15); border-radius: 30px; position: relative; overflow: hidden; box-shadow: var(--glass-shadow); border: var(--glass-border);">
                     <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(245, 245, 247, 0.2); border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--text-primary); border: var(--glass-border); backdrop-filter: blur(5px);">
-                        <i class="fas fa-mobile-alt" style="font-size: 60px; margin-bottom: 30px; color: var(--primary-color);"></i>
+                        <img src="IMAGE_CONFIG.icons.mobile" alt="KM APP" style="width: 60px; height: 60px; margin-bottom: 30px;">
                         <span>KM APP</span>
                     </div>
                 </div>
@@ -1644,9 +1689,7 @@
             </div>
             
             <div class="horizontal-image">
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-desktop" style="font-size: 120px; color: var(--primary-color);"></i>
-                </div>
+                <img src="IMAGE_CONFIG.icons.desktop" alt="后台管理系统" style="width: 120px; height: 120px;">
             </div>
         </div>
     </section>
@@ -1663,7 +1706,7 @@
             <div class="dashboard-category">
                 <div class="category-header">
                     <div class="category-icon">
-                        <i class="fas fa-laptop-code"></i>
+                        <img src="IMAGE_CONFIG.icons.laptop" alt="包网演示站" style="width: 30px; height: 30px;">
                     </div>
                     <h2 class="category-title">包网演示站</h2>
                 </div>
@@ -1674,7 +1717,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="综合包网">
+                                <img src="IMAGE_CONFIG.icons.sites.general" alt="综合包网">
                             </div>
                             <div class="site-name">综合包网</div>
                         </div>
@@ -1689,7 +1732,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/2452/2452494.png" alt="三合系包网">
+                                <img src="IMAGE_CONFIG.icons.sites.triple" alt="三合系包网">
                             </div>
                             <div class="site-name">三合系包网</div>
                         </div>
@@ -1707,7 +1750,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="U站">
+                                <img src="IMAGE_CONFIG.icons.sites.uSite" alt="U站">
                             </div>
                             <div class="site-name">U站</div>
                         </div>
@@ -1727,7 +1770,7 @@
             <div class="dashboard-category">
                 <div class="category-header">
                     <div class="category-icon">
-                        <i class="fas fa-rocket"></i>
+                        <img src="IMAGE_CONFIG.icons.rocket" alt="成品站" style="width: 30px; height: 30px;">
                     </div>
                     <h2 class="category-title">成品站</h2>
                 </div>
@@ -1738,7 +1781,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/857/857418.png" alt="派亿体育">
+                                <img src="IMAGE_CONFIG.icons.sports.p1ty" alt="派亿体育">
                             </div>
                             <div class="site-name">派亿体育</div>
                         </div>
@@ -1753,7 +1796,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/857/857419.png" alt="木森体育">
+                                <img src="IMAGE_CONFIG.icons.sports.ms368" alt="木森体育">
                             </div>
                             <div class="site-name">木森体育</div>
                         </div>
@@ -1768,7 +1811,7 @@
                     <div class="site-card">
                         <div class="site-header">
                             <div class="site-icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/857/857422.png" alt="红8体育">
+                                <img src="IMAGE_CONFIG.icons.sports.h8ty" alt="红8体育">
                             </div>
                             <div class="site-name">红8体育</div>
                         </div>
